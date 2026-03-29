@@ -11,41 +11,10 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="page-noise" aria-hidden="true"></div>
-
-  <main class="terminal" aria-labelledby="shell-title">
-    <header class="terminal__bar">
-      <div class="terminal__lights" aria-hidden="true">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <p class="terminal__path" id="shell-title">~/portfolio</p>
-    </header>
-
-    <section class="terminal__intro" aria-label="Session info">
-      <p class="prompt-line"><span class="prompt">visitor@portfolio:~$</span> ./render README.md</p>
-      <p class="terminal__note">
-        Edit <code>README.md</code> and refresh the page to update your site. No manual HTML content edits
-        needed.
-      </p>
-    </section>
-
-    <section class="terminal__panel" aria-live="polite">
-      <div class="panel__header">
-        <p class="prompt-line"><span class="prompt">visitor@portfolio:~$</span> cat README.md</p>
-        <p class="panel__status" id="render-status">loading content...</p>
-      </div>
-
-      <article id="readme-root" class="markdown-output">
-        <p>Loading README.md...</p>
-      </article>
-    </section>
-
-    <footer class="terminal__footer">
-      <span class="prompt">visitor@portfolio:~$</span>
-      <span class="cursor" aria-hidden="true"></span>
-    </footer>
+  <main class="page-shell">
+    <article id="readme-root" class="markdown-output" aria-live="polite">
+      <p>Loading README.md...</p>
+    </article>
   </main>
 
   <noscript>

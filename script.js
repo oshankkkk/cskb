@@ -1,6 +1,4 @@
 const readmeRoot = document.querySelector("#readme-root");
-const renderStatus = document.querySelector("#render-status");
-const terminalPath = document.querySelector("#shell-title");
 
 const HTML_ESCAPE_LOOKUP = {
   "&": "&amp;",
@@ -200,26 +198,13 @@ function extractTitle(markdown) {
   return match ? match[1].trim() : "Portfolio";
 }
 
-function updateShellCopy(markdown) {
+function updatePageMeta(markdown) {
   const title = extractTitle(markdown);
   document.title = `${title} | Portfolio`;
-  terminalPath.textContent = `~/${title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "portfolio"}`;
-
-  const contentLines = stripHiddenComments(markdown)
-    .split(/\r\n?|\n/)
-    .filter((line) => line.trim()).length;
-
-  const syncedAt = new Intl.DateTimeFormat(undefined, {
-    hour: "2-digit",
-    minute: "2-digit",
-  }).format(new Date());
-
-  renderStatus.textContent = `${contentLines} lines rendered | ${syncedAt}`;
 }
 
 function showError(error) {
   document.title = "README not loaded | Portfolio";
-  renderStatus.textContent = "unable to load README.md";
   readmeRoot.innerHTML = `
     <h1>README.md could not be loaded</h1>
     <p>This page renders directly from <code>README.md</code>.</p>
@@ -241,7 +226,7 @@ async function renderReadme() {
 
     const markdown = await response.text();
     readmeRoot.innerHTML = markdownToHtml(markdown);
-    updateShellCopy(markdown);
+    updatePageMeta(markdown);
   } catch (error) {
     showError(error);
   }
