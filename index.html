@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>README Portfolio</title>
+  <meta
+    name="description"
+    content="A minimal terminal-inspired portfolio that renders directly from README.md."
+  >
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-noise" aria-hidden="true"></div>
+
+  <main class="terminal" aria-labelledby="shell-title">
+    <header class="terminal__bar">
+      <div class="terminal__lights" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <p class="terminal__path" id="shell-title">~/portfolio</p>
+    </header>
+
+    <section class="terminal__intro" aria-label="Session info">
+      <p class="prompt-line"><span class="prompt">visitor@portfolio:~$</span> ./render README.md</p>
+      <p class="terminal__note">
+        Edit <code>README.md</code> and refresh the page to update your site. No manual HTML content edits
+        needed.
+      </p>
+    </section>
+
+    <section class="terminal__panel" aria-live="polite">
+      <div class="panel__header">
+        <p class="prompt-line"><span class="prompt">visitor@portfolio:~$</span> cat README.md</p>
+        <p class="panel__status" id="render-status">loading content...</p>
+      </div>
+
+      <article id="readme-root" class="markdown-output">
+        <p>Loading README.md...</p>
+      </article>
+    </section>
+
+    <footer class="terminal__footer">
+      <span class="prompt">visitor@portfolio:~$</span>
+      <span class="cursor" aria-hidden="true"></span>
+    </footer>
+  </main>
+
+  <noscript>
+    <p class="no-script">
+      This site needs JavaScript enabled because it renders directly from <code>README.md</code>.
+    </p>
+  </noscript>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
