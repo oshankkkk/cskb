@@ -96,6 +96,132 @@ And that's why it's called an **Abstract Syntax TREE** — because what you end 
 ```
 
 The interpreter then just walks this tree from top to bottom and computes. You nailed it man!
+> Precedence is important
+
+```
+expression is:
+  a term
+  followed by zero or more of:
+    (a + or -) then another term
+
+term        → 1
+(+ term)    → + 2
+(- term)    → - 3
+
+term is:
+  a primary
+  followed by zero or more of:
+    (a * or /) then another primary
+
+a raw number    → 2, 3, 42
+OR
+an order        → (expression)   ← i.e. something in brackets
+
+expression sees:
+  term → (1+2)*3       ← term handles the * part
+  - term → - 4
+  + term → + 2
+
+but how does term get (1+2)*3?
+  term sees:
+    primary → (1+2)    ← primary handles the brackets
+    * primary → * 3
+
+but how does primary get (1+2)?
+  primary sees ( → calls expression again!
+    expression resolves 1+2 inside the brackets
+  primary wraps it in Grouping(1+2)
+  
+expression    handles + -        (weakest, last)
+    ↓
+term          handles * /
+    ↓
+primary       handles numbers and ()   (strongest, first)
+```
+
+
+Okay let me break each one down!
+
+**Rule 1: `expression := term (("+"|"-") term)*`**
+
+Read it as:
+```
+expression is:
+  a term
+  followed by zero or more of:
+    (a + or -) then another term
+```
+
+So for `1 + 2 - 3` it reads as:
+```
+term        → 1
+(+ term)    → + 2
+(- term)    → - 3
+```
+
+The `*` at the end just means **zero or more times**. So a single `1` with no `+` or `-` is also a valid expression — it just has zero repetitions.
+
+**Rule 2: `term := primary (("*"|"/") primary)*`**
+
+Same idea but one level down:
+```
+term is:
+  a primary
+  followed by zero or more of:
+    (a * or /) then another primary
+```
+
+So for `2 * 3 / 4`:
+```
+primary      → 2
+(* primary)  → * 3
+(/ primary)  → / 4
+```
+
+**Rule 3: `primary := number | order`**
+
+This one is simple — primary is either:
+```
+a raw number    → 2, 3, 42
+OR
+an order        → (expression)   ← i.e. something in brackets
+```
+
+**Now see how they chain together:**
+
+For `(1 + 2) * 3 - 4 + 2`:
+```
+expression sees:
+  term → (1+2)*3       ← term handles the * part
+  - term → - 4
+  + term → + 2
+
+but how does term get (1+2)*3?
+  term sees:
+    primary → (1+2)    ← primary handles the brackets
+    * primary → * 3
+
+but how does primary get (1+2)?
+  primary sees ( → calls expression again!
+    expression resolves 1+2 inside the brackets
+  primary wraps it in Grouping(1+2)
+```
+
+**The key insight is:**
+
+Each rule only calls the rule below it, which is why `*` and `/` always get resolved before `+` and `-`. `term` is below `expression` so it always finishes first — just like our worker chain!
+
+```
+expression    handles + -        (weakest, last)
+    ↓
+term          handles * /
+    ↓
+primary       handles numbers and ()   (strongest, first)
+```
+
+The grammar rules ARE the worker chain, just written on paper instead of code!
+
+
 #### Coding the parser
 We make objects of these grammars. 
 
