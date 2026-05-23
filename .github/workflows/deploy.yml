@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+env:
+  THEME_NAME: material-gruvbox
 
 permissions:
   contents: read
@@ -30,7 +32,8 @@ jobs:
       - name: Install dependencies
         run: npm install
         working-directory: quartz
-
+      - name: Fetch Quartz Theme
+        run: curl -s -S https://raw.githubusercontent.com/saberzero1/quartz-themes/master/action.sh | bash -s -- $THEME_NAME
       - name: Build Quartz
         run: npx quartz build
         working-directory: quartz
