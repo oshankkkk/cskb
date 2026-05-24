@@ -1,9 +1,9 @@
 # Oshan Kodagoda
 
 These things are cool:
-- Neovim
-- Tiling window managers
-- Obsidian
+- [Neovim](https://neovim.io/)
+- [r/unixporn](https://www.reddit.com/r/unixporn/)
+- [Obsidian](https://obsidian.md/)
 - Compilers
 
 These people are cool:
@@ -17,6 +17,7 @@ These people are cool:
 Things i wanna try:
 - Lisp
 - Rust
- 
-> My friends and i meet at WSO2 weekly to talk bout these stuff, if your interested send a mail to <email>  
+- NixOS 
+
+> My friends and i meet at WSO2 weekly to talk bout these stuff, if your interested send a mail to oshankodagoda200667@gmail.com
 
