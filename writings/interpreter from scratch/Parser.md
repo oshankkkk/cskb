@@ -1,4 +1,4 @@
-# Building the Parser for sprinklelang (--placeholder-name)
+All my notes on building the language parser from scratch.
 ## Language grammar
 ### Backus-Naur Format of writing language grammar
 Grammar is a set of rules used for producing and recognizing, a set of strings.
