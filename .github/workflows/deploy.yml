@@ -32,7 +32,7 @@ jobs:
       - name: Install dependencies
         run: npm install
         working-directory: quartz
-      - name: Fetch Quartz Theme
+     
       - name: Build Quartz
         run: npx quartz build
         working-directory: quartz
