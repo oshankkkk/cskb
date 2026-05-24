@@ -2,6 +2,8 @@
 ## Language grammar
 ### Backus-Naur Format of writing language grammar
 Grammar is a set of rules used for producing and recognizing, a set of strings.
+
+recursive decent is a top down parser techniques
 ##### Different types of grammars. 
 ###### Regular Grammars
 ###### Context-free grammars
@@ -11,9 +13,7 @@ https://www.youtube.com/watch?v=SToUyjAsaFk
 https://youtu.be/0c8b7YfsBKs?t=186
 https://en.wikipedia.org/wiki/Compilers:_Principles,_Techniques,_and_Tools
 #### Writing grammar and building a AST 
-
 We are going to make the grammar and represent it with BNF
-```
 ```
 ##### Grammar
 ```text
