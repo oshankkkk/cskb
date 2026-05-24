@@ -1,19 +1,31 @@
 All my notes on building the language parser from scratch.
 ## Language grammar
-### Backus-Naur Format of writing language grammar
-Grammar is a set of rules used for producing and recognizing, a set of strings.
+A language grammars are rules used for producing and recognizing it. In English you can divide a sentence into 3 parts with its grammar.
 
-recursive decent is a top down parser techniques
-##### Different types of grammars. 
+```
+Sentence:= <Subject> <Verb> <Object>
+```
+
+Taking the language and breaking it down to its bones layer by layer according to the grammar is called parsing. This means to build one 1st one should actually understand how the grammar works in that language. This gets hard depending on the complexity of the language and how big it is (obviously).
+#### Different types of grammars. 
+These systems of rules all can be divide into 3 types.
 ###### Regular Grammars
+
 ###### Context-free grammars
+This type of grammar in langauges 
+It describes which sequences of tokens are valid and how they can be grouped hierarchically. 
+A CFG does not care about surrounding context when applying rules; each rule works independently.
 ###### Context sensitive grammars
 
 https://www.youtube.com/watch?v=SToUyjAsaFk
 https://youtu.be/0c8b7YfsBKs?t=186
 https://en.wikipedia.org/wiki/Compilers:_Principles,_Techniques,_and_Tools
-#### Writing grammar and building a AST 
+https://www.youtube.com/watch?v=WgEsPTAL55Q
+#### Creating grammar and the Backus-Naur format
+BNF is a notation used to design the grammar of a language.  
+At first this seems easy but its actually kinda hard, you can create different combos, you have to test them and how stuff works recursively. Also there is no one single correct grammar for a language.
 We are going to make the grammar and represent it with BNF
+
 ```
 ##### Grammar
 ```text

@@ -8,7 +8,7 @@ You wont understand everything they say, but the point. Its just exposer, repeti
 
 Its like unlocking new maps in games lol
 
-Same with[ Theo](https://www.youtube.com/@t3dotgg). hes like a more high level version of the "cracked dev" and i love his excalidraw explanations, specially his career advice . His streams are not really bout raw coding tho, its reacting to tech dram explaining his takes in detail which i really like. you really can  learn a lot from them. Again same vibe of exposing yourselves to new corners of the field. 
+Same with[ Theo](https://www.youtube.com/@t3dotgg). hes like a more high level version of the "cracked dev" and i love his Excalidraw explanations, specially his career advice . His streams are not really bout raw coding tho, its reacting to tech dram explaining his takes in detail which i really like. you really can  learn a lot from them. Again same vibe of exposing yourselves to new corners of the field. 
 
 I'm based in Sri Lanka, and I don't see enough of this conversation happening locally, and thats low key a little sad. There's a whole side of CS that rarely gets talked about: Linux, functional programming, obscure languages that exist for deeply interesting reasons, tooling that makes you rethink your entire workflow. 
 
