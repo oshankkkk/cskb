@@ -34,23 +34,66 @@ The static analysis done in the AST uses CSG concepts to find compile time error
 BNF is a notation used to design CFG grammar of a language. 
 [This is guy on youtube explains BNF beautifully](https://youtu.be/MMxMeX5emUA?si=0bnDadT-yWteg96t)
 If your dont wanna watch that heres the summery 
+###### Terminals
+Terminals are the basic symbols of a language. They come directly from the lexer as tokens and cannot be broken down further by grammar rules. They represent the actual pieces of text written in the source code.
+
+```txt
+Expression:
+x = 5 + 3
+
+Terminals:
+IDENTIFIER  =  NUMBER  +  NUMBER (so basically tokens)
+```
+###### Non-terminals
+Non-terminals are just made up of terminals, like terminals are the atoms and they come together to build a non terminal
+
+```txt
+expression, term, factor, statement
+```
+###### Productions (Grammar Rules)
+The productions are the written notation thing on how non terminals are made from terminals
+
+```txt
+factor -> NUMBER
+expression -> NUMBER  OPERATOR NUMBER
+```
+
+```txt
+expression → term + expression
+expression → term
+term → factor * term
+term → factor
+factor → NUMBER
+factor → ( expression )
+```
+###### Notation rule
 
 ```
 	LHS                      RHS 
 Non terminals only := terminals | Non terminals
 ```
 
-| Concept                     | Description                                                                                                                                                                                                                                                 | Examples                                                        |
-| --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| Terminals                   | Terminals are the basic symbols of the language. They come directly from the lexer as tokens. Terminals cannot be broken down further by grammar rules. They represent the actual input elements.                                                           | NUMBER, IDENTIFIER, +, -, *, /, (, ), =                         |
-| Non-Terminals               | Non-terminals are abstract grammar symbols used to describe structure. They do not appear in the final program text. Instead, they define how terminals and other non-terminals combine.                                                                    | expression, term, factor, statement                             |
-| Productions (Grammar Rules) | A production (or rule) defines how a non-terminal expands into other symbols. Every production has: * A head (the non-terminal being defined/factor) * A body (the sequence it expands into/statement). Productions are the building blocks of the grammar. | factor → NUMBER; statement → IDENTIFIER = expression            |
-| Derivations                 | A derivation is the step-by-step process of applying grammar rules to produce a sequence of terminals. It shows how a string can be generated from the start symbol.                                                                                        | expression → expression + term → term → NUMBER (example: 2 + 3) |
+```
+
+> Thats how Backus-Naur comes together, terminals, non-terminals and productions 
+###### Derivations
+A derivation is the step-by-step process of applying grammar rules to generate a valid sequence of terminals. It shows how the parser can produce a string starting from the start symbol. Like math workings yk step by step simplification of these grammar rules to get the terminals, or adding terminals to get the expression.
+
+```txt
+Expression:
+NUMBER + NUMBER 
+
+Derivation:
+expression → expression + term
+expression → term
+term → NUMBER
+```
+``
+
 Language grammar design first this seems easy but its actually kinda hard, you can create different combos, you have to test them and see how stuff works recursively. Also there can be multiple correct grammar sets for a language.
 We are going to make the grammar and represent it with BNF
 
 ```
-
 ##### Grammar
 ```text
 Expression 1:
@@ -105,15 +148,13 @@ factor() receives NumberNodes → sees * → wraps in BinaryNode
     ↑
 primary() finds raw tokens → wraps in NumberNode
 ```
-
 ##### Parsing a arithmetic expression
 
 ```
 (1 + 2 + 3) * 4
 ```
-
 ###### How it works
-The parser fibonaccies its down and bubbles up the AST
+The parser fibonaccies its down and bubbles up the AST. I generated a stack trace on how the recursion happends step by step. if you dont get this just follow the recursion and write it down with pen and paper idk
 
 ```
 parse() called
@@ -269,7 +310,6 @@ parse() called
 
 term() returns final AST 
 ```
-
 ###### Final AST
 
 ```
@@ -287,6 +327,6 @@ BinaryNode(
 
 ```
 
-Another thing is association, which is kind of automatically handled by recursive decent kind of automatically handles it.
+> Another thing is association, which is kind of automatically handled by recursive decent. 
 
 

@@ -12,13 +12,13 @@ References i used:
 ![[Interpreter from scratch-1779703370444.webp|579]]
 
 #### Scanning
-The code you write is just a long string of characters. Scanning breaks that string into meaningful chunks — like how you'd break a sentence into individual words. White space and comments get thrown away since they don't mean anything to the language.
+The code you write is just a long string of characters. Scanning breaks that string into meaningful chunks  like how you'd break a sentence into individual words. White space and comments get thrown away since they don't mean anything to the language.
 #### Parsing
 Once you have those chunks, parsing arranges them into a tree shape that shows how everything relates to each other — which parts are nested inside which. It also catches mistakes in your code's structure, like missing brackets or wrong syntax.
 #### Static Analysis
-This is where the language figures out what your code actually means. It looks up what every variable name refers to, where it was defined, and whether you're using it correctly. For typed languages, it also checks that your types make sense. All the findings get saved somewhere — either attached to the tree, in a lookup table, or in a whole new structure — so later stages can use them.
+This is where the language figures out what your code actually means. It looks up what every variable name refers to, where it was defined, and whether you're using it correctly. For typed languages, it also checks that your types make sense. All the findings get saved somewhere either attached to the tree, in a lookup table, or in a whole new structure, so later stages can use them.
 #### Intermediate Representation (IR)
-The code gets converted into a middle format that isn't tied to any specific language or machine. This makes it easy to support many different languages and devices without rewriting everything from scratch — you just plug in different front and back ends.
+The code gets converted into a middle format that isn't tied to any specific language or machine. This makes it easy to support many different languages and devices without rewriting everything from scratch you just plug in different front and back ends.
 #### Optimization
 Once the meaning of the code is understood, it can be swapped out for a leaner version that does the exact same thing but faster. For example, math that never changes can just be pre-calculated so the program doesn't waste time doing it at runtime.
 #### Code Generation
