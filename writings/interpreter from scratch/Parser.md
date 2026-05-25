@@ -85,6 +85,10 @@ BNF Grammar:
 	<letter>  ::= a | b | c | d | e | f | g | h | i | j | k | l | m
 	            | n | o | p | q | r | s | t | u | v | w | x | y | z
 ```
+#### Recursive Decent Parser
+Recursive decent is a top down parser. Its a very common and standard parsing algorithm and used in compilers like C, Rust and Go. Also javascript V8 uses this as well. 
+
+> This is real shit bn, i wish more ppl where into these stuff
 
 When making a grammar for a arithmetic expression something you have to keep in mind is BODMAS. yk that Brackets,Of,Division,Multiplication,Addition thing. The order of operations. So since we are using a top down parser we need the stuff to be done 1st be implemented at the bottom cause thats how top down recursion works.
 
@@ -102,98 +106,187 @@ factor() receives NumberNodes → sees * → wraps in BinaryNode
 primary() finds raw tokens → wraps in NumberNode
 ```
 
-Another thing is association, which is kind of automatically handled by recursive decent
+##### Parsing a arithmetic expression
 
 ```
-expression is:
-  a term
-  followed by zero or more of:
-    (a + or -) then another term
-
-term        → 1
-(+ term)    → + 2
-(- term)    → - 3
-
-term is:
-  a primary
-  followed by zero or more of:
-    (a * or /) then another primary
-
-a raw number    → 2, 3, 42
-OR
-an order        → (expression)   ← i.e. something in brackets
-
-expression sees:
-  term → (1+2)*3       ← term handles the * part
-  - term → - 4
-  + term → + 2
-
-but how does term get (1+2)*3?
-  term sees:
-    primary → (1+2)    ← primary handles the brackets
-    * primary → * 3
-
-but how does primary get (1+2)?
-  primary sees ( → calls expression again!
-    expression resolves 1+2 inside the brackets
-  primary wraps it in Grouping(1+2)
-  
-expression    handles + -        (weakest, last)
-    ↓
-term          handles * /
-    ↓
-primary       handles numbers and ()   (strongest, first)
+(1 + 2 + 3) * 4
 ```
 
+###### How it works
+The parser fibonaccies its down and bubbles up the AST
 
+```
+parse() called
+│
+└── calls term()
+    │
+    └── term() called
+        │
+        └── calls factor()
+            │
+            └── factor() called
+                │
+                ├── calls primary()
+                │   │
+                │   └── primary() called
+                │       │
+                │       ├── sees LEFT_PAREN "("
+                │       │   └── advance() 👆 pointer moves past "("
+                │       │
+                │       ├── parses inside grouping
+                │       │   │
+                │       │   └── calls inner term()
+                │       │       │
+                │       │       └── inner term() called
+                │       │           │
+                │       │           ├── calls factor()
+                │       │           │   │
+                │       │           │   └── factor() called
+                │       │           │       │
+                │       │           │       ├── calls primary()
+                │       │           │       │   │
+                │       │           │       │   └── primary() called
+                │       │           │       │       │
+                │       │           │       │       ├── sees INTEGER "1"
+                │       │           │       │       │   └── advance() 👆 past "1"
+                │       │           │       │       │
+                │       │           │       │       └── returns NumberNode(1)
+                │       │           │       │
+                │       │           │       ├── factor() checks "*" or "/"
+                │       │           │       │   └── sees PLUS "+"
+                │       │           │       │       └── not mine ❌
+                │       │           │       │
+                │       │           │       └── returns NumberNode(1)
+                │       │           │
+                │       │           ├── term() checks "+" or "-"
+                │       │           │   │
+                │       │           │   └── sees PLUS "+"
+                │       │           │       └── advance() 👆 past "+"
+                │       │           │
+                │       │           ├── parses right side of "+"
+                │       │           │   │
+                │       │           │   └── calls factor()
+                │       │           │       │
+                │       │           │       └── factor() called
+                │       │           │           │
+                │       │           │           ├── calls primary()
+                │       │           │           │   │
+                │       │           │           │   └── primary() called
+                │       │           │           │       │
+                │       │           │           │       ├── sees INTEGER "2"
+                │       │           │           │       │   └── advance() 👆 past "2"
+                │       │           │           │       │
+                │       │           │           │       └── returns NumberNode(2)
+                │       │           │           │
+                │       │           │           ├── factor() checks "*" or "/"
+                │       │           │           │   └── sees PLUS "+"
+                │       │           │           │       └── not mine ❌
+                │       │           │           │
+                │       │           │           └── returns NumberNode(2)
+                │       │           │
+                │       │           ├── builds
+                │       │           │   │
+                │       │           │   └── BinaryNode(
+                │       │           │         NumberNode(1)
+                │       │           │         +
+                │       │           │         NumberNode(2)
+                │       │           │       )
+                │       │           │
+                │       │           ├── term() checks again
+                │       │           │   │
+                │       │           │   └── sees PLUS "+"
+                │       │           │       └── advance() 👆 past "+"
+                │       │           │
+                │       │           ├── parses right side again
+                │       │           │   │
+                │       │           │   └── calls factor()
+                │       │           │       │
+                │       │           │       └── factor() called
+                │       │           │           │
+                │       │           │           ├── calls primary()
+                │       │           │           │   │
+                │       │           │           │   └── primary() called
+                │       │           │           │       │
+                │       │           │           │       ├── sees INTEGER "3"
+                │       │           │           │       │   └── advance() 👆 past "3"
+                │       │           │           │       │
+                │       │           │           │       └── returns NumberNode(3)
+                │       │           │           │
+                │       │           │           ├── factor() checks "*" or "/"
+                │       │           │           │   └── sees RIGHT_PAREN ")"
+                │       │           │           │       └── not mine ❌
+                │       │           │           │
+                │       │           │           └── returns NumberNode(3)
+                │       │           │
+                │       │           ├── builds
+                │       │           │   │
+                │       │           │   └── BinaryNode(
+                │       │           │         BinaryNode(1 + 2)
+                │       │           │         +
+                │       │           │         NumberNode(3)
+                │       │           │       )
+                │       │           │
+                │       │           ├── term() checks again
+                │       │           │   └── sees RIGHT_PAREN ")"
+                │       │           │       └── stop parsing additions
+                │       │           │
+                │       │           └── returns BinaryNode(1 + 2 + 3)
+                │       │
+                │       ├── expects RIGHT_PAREN ")"
+                │       │   └── advance() 👆 pointer moves past ")"
+                │       │
+                │       ├── wraps into
+                │       │   │
+                │       │   └── GroupingNode(
+                │       │         BinaryNode(1 + 2 + 3)
+                │       │       )
+                │       │
+                │       └── returns GroupingNode
+                │
+                ├── factor() checks "*" or "/"
+                │   │
+                │   └── sees STAR "*"
+                │       └── advance() 👆 pointer moves past "*"
+                │
+                ├── parses right side of "*"
+                │   │
+                │   └── calls primary()
+                │       │
+                │       └── primary() called
+                │           │
+                │           ├── sees INTEGER "4"
+                │           │   └── advance() 👆 pointer moves past "4"
+                │           │
+                │           └── returns NumberNode(4)
+                │
+                └── builds
+                    │
+                    └── BinaryNode(
+                          GroupingNode(1 + 2 + 3)
+                          *
+                          NumberNode(4)
+                        )
 
+term() returns final AST 
+```
 
-#### Terminals
-Terminals are the basic symbols of the language. They come directly from the lexer as tokens. Terminals cannot be broken down further by grammar rules. They represent the actual input elements.
+###### Final AST
 
-```text
-NUMBER
-IDENTIFIER
-+
--
-*
-/
-(
+```
+BinaryNode(
+  GroupingNode(
+    BinaryNode(
+      BinaryNode(1 + 2)
+      +
+      NumberNode(3)
+    )
+  )
+  *
+  NumberNode(4)
 )
-=
+
 ```
-In a parse tree, terminals appear as the leaf nodes.
-#### Non-Terminals
-Non-terminals are abstract grammar symbols used to describe structure. They do not appear in the final program text. Instead, they define how terminals and other non-terminals combine.
 
-```text
-expression
-term
-factor
-statement
-```
-Non-terminals are expanded using productions. They represent higher-level concepts in the language.
+Another thing is association, which is kind of automatically handled by recursive decent kind of automatically handles it.
 
-#### Productions (Grammar Rules)
-A production (or rule) defines how a non-terminal expands into other symbols. Every production has:
-* A head (the non-terminal being defined/factor)
-* A body (the sequence it expands into/statement)
-
-```text
-factor → NUMBER
-statement → IDENTIFIER = expression
-```
-This rule says a statement consists of an identifier, an equals sign, and an expression. Productions are the building blocks of the grammar.
-
-#### Derivations
-A derivation is the step-by-step process of applying grammar rules to produce a sequence of terminals. It shows how a string can be generated from the start symbol.
-
-```text
-2 + 3
-
-Grammer: 
-expression → expression + term
-expression → term
-term → NUMBER
-```
 
