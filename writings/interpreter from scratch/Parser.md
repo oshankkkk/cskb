@@ -1,29 +1,52 @@
-All my notes on building the language parser from scratch.
+Notes on building the language parser from scratch.
 ## Language grammar
-A language grammars are rules used for producing and recognizing it. In English you can divide a sentence into 3 parts with its grammar.
+A language grammars are rules used for producing and recognizing language. In English you can divide a sentence into 3 parts with its grammar.
 
 ```
 Sentence:= <Subject> <Verb> <Object>
 ```
 
-Taking the language and breaking it down to its bones layer by layer according to the grammar is called parsing. This means to build one 1st one should actually understand how the grammar works in that language. This gets hard depending on the complexity of the language and how big it is (obviously).
+Taking the language understanding its structure and breaking it down to its bones layer by layer according to the grammar is called parsing. This means to build one 1st one should actually understand how the grammar works in that language. This gets hard depending on the complexity of the language and how big it is (obviously).
 #### Different types of grammars. 
 These systems of rules all can be divide into 3 types.
 ###### Regular Grammars
-
+Regular Grammars are set of rules used for languages thats just a flat set of characters like a license number or a phone number, yk Each character or characters in that string according to its grammar has a meaning and thats bout it.  
+The important point is that there is not nesting, you cant nest numbers inside brackets in a phone number ryt. Thats the point, a regular grammar is grammar used for languages thats a FLAT characters.  
 ###### Context-free grammars
-This type of grammar in langauges 
-It describes which sequences of tokens are valid and how they can be grouped hierarchically. 
-A CFG does not care about surrounding context when applying rules; each rule works independently.
-###### Context sensitive grammars
+Unlike regular grammar this grammar is for languages that have nesting. 
 
-https://www.youtube.com/watch?v=SToUyjAsaFk
-https://youtu.be/0c8b7YfsBKs?t=186
-https://en.wikipedia.org/wiki/Compilers:_Principles,_Techniques,_and_Tools
-https://www.youtube.com/watch?v=WgEsPTAL55Q
+>Regular expressions(Regex) even tho they work on regular languages are itself not a regular language lol.
+ 
+It describes which sequences of tokens are valid and how they can be grouped hierarchically. 
+A CFG does not care about surrounding context when applying grammar, each rule works independently.
+(which means each grammar rule is independent)
+###### Context sensitive grammars
+CSG means based on the context grammar will apply or not. Things like, a variable can only be assigned a value of the same type if its already declared in that type.
+All of these are actually used when making a programming language
+The lexer uses regular grammar to distinguish the source code into tokens. 
+The parser uses CFG to generate the AST
+The static analysis done in the AST uses CSG concepts to find compile time errors
+
+> There is something bout CSG being computationally expensive to implement directly so ppl uses different methods for that. im still building the parser so ill update this part when im done with the static analysis part.
+
 #### Creating grammar and the Backus-Naur format
-BNF is a notation used to design the grammar of a language.  
-At first this seems easy but its actually kinda hard, you can create different combos, you have to test them and how stuff works recursively. Also there is no one single correct grammar for a language.
+
+BNF is a notation used to design CFG grammar of a language. 
+[This is guy on youtube explains BNF beautifully](https://youtu.be/MMxMeX5emUA?si=0bnDadT-yWteg96t)
+If your dont wanna watch that heres the summery 
+
+```
+	LHS                      RHS 
+Non terminals only := terminals | Non terminals
+```
+
+| Concept                     | Description                                                                                                                                                                                                                                                 | Examples                                                        |
+| --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| Terminals                   | Terminals are the basic symbols of the language. They come directly from the lexer as tokens. Terminals cannot be broken down further by grammar rules. They represent the actual input elements.                                                           | NUMBER, IDENTIFIER, +, -, *, /, (, ), =                         |
+| Non-Terminals               | Non-terminals are abstract grammar symbols used to describe structure. They do not appear in the final program text. Instead, they define how terminals and other non-terminals combine.                                                                    | expression, term, factor, statement                             |
+| Productions (Grammar Rules) | A production (or rule) defines how a non-terminal expands into other symbols. Every production has: * A head (the non-terminal being defined/factor) * A body (the sequence it expands into/statement). Productions are the building blocks of the grammar. | factor → NUMBER; statement → IDENTIFIER = expression            |
+| Derivations                 | A derivation is the step-by-step process of applying grammar rules to produce a sequence of terminals. It shows how a string can be generated from the start symbol.                                                                                        | expression → expression + term → term → NUMBER (example: 2 + 3) |
+Language grammar design first this seems easy but its actually kinda hard, you can create different combos, you have to test them and see how stuff works recursively. Also there can be multiple correct grammar sets for a language.
 We are going to make the grammar and represent it with BNF
 
 ```
@@ -61,55 +84,25 @@ BNF Grammar:
 	<word>    ::= <letter> | <letter> <word>
 	<letter>  ::= a | b | c | d | e | f | g | h | i | j | k | l | m
 	            | n | o | p | q | r | s | t | u | v | w | x | y | z
-
 ```
 
-It's like a bubble up effect:
+When making a grammar for a arithmetic expression something you have to keep in mind is BODMAS. yk that Brackets,Of,Division,Multiplication,Addition thing. The order of operations. So since we are using a top down parser we need the stuff to be done 1st be implemented at the bottom cause thats how top down recursion works.
 
 ```
-primary() finds raw tokens → wraps in NumberNode
-    ↑
-factor() receives NumberNodes → sees * → wraps in BinaryNode
+Expression 2:
+
+Each layer goes down and wraps the result in a node object (cause its a syntax TREE we are making) and sends it up
+
+equality() receives BinaryNodes → sees == → wraps in BinaryNode
     ↑
 term() receives BinaryNodes → sees + → wraps in BinaryNode
     ↑
-equality() receives BinaryNodes → sees == → wraps in BinaryNode
+factor() receives NumberNodes → sees * → wraps in BinaryNode
+    ↑
+primary() finds raw tokens → wraps in NumberNode
 ```
 
-Each layer:
-1. **goes down** to get stuff
-2. **wraps it** in a node
-3. **sends it up** to whoever called it
-
-So for `(1+2+3)*4`:
-
-```
-primary() → NumberNode(1)  ┐
-primary() → NumberNode(2)  ├→ term() wraps → BinaryNode(1+2+3)
-primary() → NumberNode(3)  ┘       ↓
-                               GroupingNode(1+2+3)
-                                       ↓
-primary() → NumberNode(4)  →  factor() wraps → BinaryNode(Group * 4)
-```
-
-The tree literally **builds itself bottom up** as the recursion unwinds back up the call stack.
-
-And that's why it's called an **Abstract Syntax TREE** — because what you end up with is literally a tree:
-
-```
-        *
-       / \
-      ( ) 4
-       |
-       +
-      / \
-     +   3
-    / \
-   1   2
-```
-
-The interpreter then just walks this tree from top to bottom and computes. You nailed it man!
-> Precedence is important
+Another thing is association, which is kind of automatically handled by recursive decent
 
 ```
 expression is:
@@ -153,110 +146,8 @@ primary       handles numbers and ()   (strongest, first)
 ```
 
 
-Okay let me break each one down!
-
-**Rule 1: `expression := term (("+"|"-") term)*`**
-
-Read it as:
-```
-expression is:
-  a term
-  followed by zero or more of:
-    (a + or -) then another term
-```
-
-So for `1 + 2 - 3` it reads as:
-```
-term        → 1
-(+ term)    → + 2
-(- term)    → - 3
-```
-
-The `*` at the end just means **zero or more times**. So a single `1` with no `+` or `-` is also a valid expression — it just has zero repetitions.
-
-**Rule 2: `term := primary (("*"|"/") primary)*`**
-
-Same idea but one level down:
-```
-term is:
-  a primary
-  followed by zero or more of:
-    (a * or /) then another primary
-```
-
-So for `2 * 3 / 4`:
-```
-primary      → 2
-(* primary)  → * 3
-(/ primary)  → / 4
-```
-
-**Rule 3: `primary := number | order`**
-
-This one is simple — primary is either:
-```
-a raw number    → 2, 3, 42
-OR
-an order        → (expression)   ← i.e. something in brackets
-```
-
-**Now see how they chain together:**
-
-For `(1 + 2) * 3 - 4 + 2`:
-```
-expression sees:
-  term → (1+2)*3       ← term handles the * part
-  - term → - 4
-  + term → + 2
-
-but how does term get (1+2)*3?
-  term sees:
-    primary → (1+2)    ← primary handles the brackets
-    * primary → * 3
-
-but how does primary get (1+2)?
-  primary sees ( → calls expression again!
-    expression resolves 1+2 inside the brackets
-  primary wraps it in Grouping(1+2)
-```
-
-**The key insight is:**
-
-Each rule only calls the rule below it, which is why `*` and `/` always get resolved before `+` and `-`. `term` is below `expression` so it always finishes first — just like our worker chain!
-
-```
-expression    handles + -        (weakest, last)
-    ↓
-term          handles * /
-    ↓
-primary       handles numbers and ()   (strongest, first)
-```
-
-The grammar rules ARE the worker chain, just written on paper instead of code!
 
 
-#### Coding the parser
-We make objects of these grammars. 
-
-Taking in the tokens made by the lexer and converting it into a AST( Abstract Syntax Tree ). For that first we have to design how the language grammar will work. 
-
-```
-Lexer output:
-
-IF, LPAREN, IDENT(x), GT, NUMBER(3), RPAREN,
-IDENT(y), ASSIGN, NUMBER(5), SEMICOLON
-```
-- No scope among tokens for local, global and nesting code blocks
-- Stuff like BODMAS in math operations
-#### Understanding grammer in a programming language 
-A context-free grammar is a formal system used to define the structure of a programming language. It describes which sequences of tokens are valid and how they can be grouped hierarchically. A CFG does not care about surrounding context when applying rules; each rule works independently.
- 
-```text
-expression → expression + term
-expression → term
-term → NUMBER
-```
-This grammar defines how arithmetic expressions are structured. It says an `expression` can be another `expression` followed by `+` and a `term`, or it can simply be a `term`.
 #### Terminals
 Terminals are the basic symbols of the language. They come directly from the lexer as tokens. Terminals cannot be broken down further by grammar rules. They represent the actual input elements.
 
@@ -306,33 +197,3 @@ expression → term
 term → NUMBER
 ```
 
-Basic flow:
-
-```
-expression
-
-expression → expression + term
-
-term + term
-
-NUMBER + NUMBER
-
-```
-
-This sequence of rule applications is a derivation.
-#### Abstract Syntax Tree
-
-A parse tree represents the hierarchical structure created by a derivation. It visually shows how the grammar rules were applied.
-* Internal nodes are non-terminals.
-* Leaves are terminals.
-* The structure reflects the grammar rules.
-
-
-
-
-
-
-
-- 🍅 (pomodoro::WORK) (duration:: 30m) (begin:: 2026-05-18 10:27) - (end:: 2026-05-18 10:57)
-- 🥤 (pomodoro::BREAK) (duration:: 10m) (begin:: 2026-05-18 11:00) - (end:: 2026-05-18 11:10)
-- 🍅 (pomodoro::WORK) (duration:: 30m) (begin:: 2026-05-18 14:06) - (end:: 2026-05-18 14:36)
