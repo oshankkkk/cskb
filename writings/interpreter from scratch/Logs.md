@@ -10,3 +10,4 @@
 - The tree walker interpreter is just to get one used to working with all the new systems in this domain.
 - Im not gonna make the treewalker interpreter, im gonna jump straight into the actual C one. 
 - wtf is bytecode.
+- So we just have to make a place to keep the bytecode with the optcode. And also make a disassembler
