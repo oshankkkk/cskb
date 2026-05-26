@@ -2,6 +2,7 @@
 id: Rant
 aliases: []
 tags: []
+date: 2026-05-19
 ---
 Sometime last year, I fell down the [Vim](https://www.youtube.com/watch?v=1UXHsCT18wE) hole. That's where I found Prime's channel
 

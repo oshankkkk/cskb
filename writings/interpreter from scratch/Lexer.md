@@ -1,3 +1,8 @@
+---
+title: Lexer
+date: 2026-05-20
+---
+
 Notes on building a lexer
 ### Lexical analysis
 - Breaking characters into different tokens so the computer can easily understand them.

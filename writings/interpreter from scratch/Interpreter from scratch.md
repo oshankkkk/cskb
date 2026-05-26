@@ -2,8 +2,9 @@
 id: Interpreter from scratch
 aliases: []
 tags: []
+date: 2026-05-20
 ---
-The Language name is Giggle, and the file extension is .gg .
+The Language name is Giggles, and the file extension is .gg .
 Its made with Go and the syntax is kind of inspired by [lua](https://www.lua.org/).
 
 References i used:
@@ -17,15 +18,17 @@ References i used:
 ![[Interpreter from scratch-1779703370444.webp|579]]
 ### Frontend
 #### Lexical Analysis
-The code you write is just a long list of characters.Lexing/Lexical/Scanning analysis breaks that string into tokens.Token are the stuff that the compiler/interpeter actuall reads.So tokenisation cleans your code and only gets out the actual code. The tokens are also called lexemes.
+The code you write is just a long list of characters. Lexing/Lexical/Scanning analysis breaks that string into tokens. Token are the stuff that the compiler/interpeter actually reads.So tokenization cleans your code and only gets out the actual code. The tokens are also called lexemes 
 #### Parsing
-Once you have those tokens, the parser takes them and creates the structure of your program. So stuff like scopes works correctly and how everything related to each other.This is called a Abstract Syntax Tree
+##### Abstract Syntax Tree (AST)
+Once you have those tokens, the parser takes them and creates the structure of your program. So stuff like scopes works correctly and how everything related to each other. This is called a Abstract Syntax Tree
+
 > If your using neovim, you can go :TreeInspect and you can actually see the live syntax tree of your code 
 #### Static Analysis
-This is where type checking and compiler errors stuff happen. It checks the AST.
+This is where type checking and compiler errors stuff happen. It checks the Abstract Syntax Tree.
 #### Intermediate Representation (IR)
 The code gets converted into a middle format, not bytecode and not the highlevel language.
-This is like a interface. this is made so you can plugin in different compilers/interpters thats made for different archtectures like arm and x64.
+This is like acts interface. this is made so you can plugin in different compilers/interpreters thats made for different architectures like arm and x64. 
 ### Backend
 #### Optimization
 Once the language actually works you can make it fast and all. Thats what this phase is for  
@@ -41,3 +44,6 @@ Even after the program is compiled and running, the language still needs to prov
 Compilation and interpretation are methods of language implementations. Its a little more complex than line by line code execute is interpreted while the whole program code execute is compiled. 
 
 I dont feel like writing it so go read the chapter 2 on the book
+
+
+

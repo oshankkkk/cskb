@@ -1,3 +1,8 @@
+---
+title: Parser
+date: 2026-05-24
+modified: 2026-05-26
+---
 Notes on building the language parser from scratch.
 ## Language grammar
 A language grammars are rules used for producing and recognizing language. In English you can divide a sentence into 3 parts with its grammar.
@@ -12,7 +17,7 @@ These systems of rules all can be divide into 3 types.
 ###### Regular Grammars
 Regular Grammars are set of rules used for languages thats just a flat set of characters like a license number or a phone number, yk Each character or characters in that string according to its grammar has a meaning and thats bout it.  
 The important point is that there is not nesting, you cant nest numbers inside brackets in a phone number ryt. Thats the point, a regular grammar is grammar used for languages thats a FLAT characters.  
-###### Context-free grammars
+###### Context free grammars
 Unlike regular grammar this grammar is for languages that have nesting. 
 
 >Regular expressions(Regex) even tho they work on regular languages are itself not a regular language lol.
