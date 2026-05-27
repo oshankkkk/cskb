@@ -1,8 +1,14 @@
 ---
-title: Parser
+title: A Parser from scratch
 date: 2026-05-24
 ---
 Notes on building the language parser from scratch.
+
+References
+- [Video bout grammars and parser](https://youtu.be/ENKT0Z3gldE?si=qL2AxzWbKFLekSV6)
+- [Another one i watched on parsers](https://www.youtube.com/watch?v=SToUyjAsaFk)
+- Crafting interpreters by robert nystrom
+
 ## Language grammar
 A language grammars are rules used for producing and recognizing language. In English you can divide a sentence into 3 parts with its grammar.
 

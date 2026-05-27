@@ -1,17 +1,17 @@
 ---
 id: Interpreter from scratch
-aliases: []
-tags: []
 date: 2026-05-20
+title: Creating a interpreter from scratch
 ---
 The Language name is [Giggles](https://github.com/oshankkkk/Giggles), and the file extension is .gg. Its made with Go and the syntax is kind of inspired by [lua](https://www.lua.org/).
-References i used:
+
+References:
 - [Crafting interpreters book](https://craftinginterpreters.com)
--  [Cool video bout grammars and parser](https://youtu.be/ENKT0Z3gldE?si=qL2AxzWbKFLekSV6)
-- [Another one i watched on parsers](https://www.youtube.com/watch?v=SToUyjAsaFk)
 - [Another one, this one explains how a interpreter works](https://www.youtube.com/watch?v=LCslqgM48D4)
 - [The Dragon Book ](https://dpvipracollege.ac.in/wp-content/uploads/2023/01/Alfred-V.-Aho-Monica-S.-Lam-Ravi-Sethi-Jeffrey-D.-Ullman-Compilers-Principles-Techniques-and-Tools-Pearson_Addison-Wesley-2007.pdf) (This was too complex for me or prolly for anyone thats doing these kinda stuff for the 1st time. But it has everything you need and its considered the gold standard when it comes to building compilers)
 - [r/compilers](https://www.reddit.com/r/Compilers/) 
+- I also added more references on the indivitual notes
+
 ## How a programming language works
 
 ![[Interpreter from scratch-1779703370444.webp|579]]
@@ -22,7 +22,7 @@ The code you write is just a long list of characters. Lexing/Lexical/Scanning an
 ##### Abstract Syntax Tree (AST)
 Once you have those tokens, the parser takes them and creates the structure of your program. So stuff like scopes works correctly and how everything related to each other. This is called a Abstract Syntax Tree
 
-> If your using neovim, you can go :TreeInspect and you can actually see the live syntax tree of your code 
+> If your using neovim, you can go :InspectTree and you can actually see the live syntax tree of your code 
 #### Static Analysis
 This is where type checking and compiler errors stuff happen. It checks the Abstract Syntax Tree.
 #### Intermediate Representation (IR)
@@ -45,7 +45,7 @@ But the difference is little more complex than the traditional line by line code
 
 > Like java is technically both compiled and interpreted, cause it compiled to java bytecode and then runs inside of the JVM. The JVM interprets the code. And then theres tsc(Typescript Compiler), but ts is not compiled! (its transpiled into js and gets JIT compiled in V8)
 #### How to see the difference of the two 
-A compiler basically turns 1 form of code to another form of code, usually something more lower level that what it was originally. Thats it when it comes to a compiler. Its just a translator.
+A compiler basically turns 1 form of code to another form of code, usually something more lower level that what it was originally.( emphasis on the usually part) Thats it when it comes to a compiler. Its just a translator.
 But interpreters  converts the code into some intermediate representation and runs that instead of converting it to machine code.
 
 > In languages like python  it 1st compiles python code to bytecode(intermediate representation) and runs that through a Virtual Machine

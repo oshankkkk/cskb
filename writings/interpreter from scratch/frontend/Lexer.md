@@ -1,7 +1,8 @@
 ---
-title: Lexer
+title: A Lexer from scratch
 date: 2026-05-20
 ---
+Main reference was crafting interpters 
 Notes on building a lexer
 ### Lexical analysis
 - Breaking characters into different tokens so the computer can easily understand them.
