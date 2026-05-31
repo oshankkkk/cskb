@@ -1,2 +1,4 @@
-so a vm takes the bytecode and puts them to the stack and does stuff
+A software modeled after the von nueman architecture.
+
+## The stack 
 

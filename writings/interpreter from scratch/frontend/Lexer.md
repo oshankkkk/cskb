@@ -1,5 +1,5 @@
 ---
-title: A Lexer from scratch
+title: Lexer
 date: 2026-05-20
 ---
 Main reference was crafting interpters 

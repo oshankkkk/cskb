@@ -1,5 +1,5 @@
 ---
-title: A Parser from scratch
+title: Parser
 date: 2026-05-24
 ---
 Notes on building the language parser from scratch.
