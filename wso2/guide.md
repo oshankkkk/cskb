@@ -32,16 +32,16 @@ The single best way to understand any interpreter is to trace one tiny program t
 
 **Read in this exact order:**
 
-| Step | File Path / Link | What you'll learn |
-|------|-------------|-------------------|
-| 1 | [AGENTS.md](file:///home/oshankodagoda/Projects/ballerina-lang-go/AGENTS.md) | The rules of the project — pipeline stages, testing conventions, architectural constraints. Read this fully. |
-| 2 | [projects/module_context.go](file:///home/oshankodagoda/Projects/ballerina-lang-go/projects/module_context.go) | The orchestrator. Skim the struct and the method that drives stages 1→10. You don't need to understand every line — just see *what calls what* in what order. |
-| 3 | [lib/io/compile/io.go](file:///home/oshankodagoda/Projects/ballerina-lang-go/lib/io/compile/io.go) | How a stdlib function is *declared* to the compiler. This is tiny and readable. |
-| 4 | [lib/io/runtime/io.go](file:///home/oshankodagoda/Projects/ballerina-lang-go/lib/io/runtime/io.go) | How the same function is *implemented* in Go. Notice the `init()` → `RegisterModuleInitializer` → `RegisterExternFunction` chain. |
-| 5 | [runtime/extern/extern.go](file:///home/oshankodagoda/Projects/ballerina-lang-go/runtime/extern/extern.go) | The `NativeFunc` signature and the `Context`/`Env` structs your runtime code receives. |
-| 6 | [runtime/runtime.go](file:///home/oshankodagoda/Projects/ballerina-lang-go/runtime/runtime.go) | How the Runtime boots up, calls module initializers, and dispatches to the BIR interpreter. |
-| 7 | [platform/pal/platform.go](file:///home/oshankodagoda/Projects/ballerina-lang-go/platform/pal/platform.go) | The PAL interface — the wall between your code and the OS. |
-| 8 | [platform/palnative/pal.go](file:///home/oshankodagoda/Projects/ballerina-lang-go/platform/palnative/pal.go) | The native implementation — `os.Stdout.Write`, `os.ReadFile`, etc. |
+| Step | File Path / Link                                                                                               | What you'll learn                                                                                                                                             |
+| ---- | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | [AGENTS.md](file:///home/oshankodagoda/Projects/ballerina-lang-go/AGENTS.md)                                   | The rules of the project — pipeline stages, testing conventions, architectural constraints. Read this fully.                                                  |
+| 2    | [projects/module_context.go](file:///home/oshankodagoda/Projects/ballerina-lang-go/projects/module_context.go) | The orchestrator. Skim the struct and the method that drives stages 1→10. You don't need to understand every line — just see *what calls what* in what order. |
+| 3    | [lib/io/compile/io.go](file:///home/oshankodagoda/Projects/ballerina-lang-go/lib/io/compile/io.go)             | How a stdlib function is *declared* to the compiler. This is tiny and readable.                                                                               |
+| 4    | [lib/io/runtime/io.go](file:///home/oshankodagoda/Projects/ballerina-lang-go/lib/io/runtime/io.go)             | How the same function is *implemented* in Go. Notice the `init()` → `RegisterModuleInitializer` → `RegisterExternFunction` chain.                             |
+| 5    | [runtime/extern/extern.go](file:///home/oshankodagoda/Projects/ballerina-lang-go/runtime/extern/extern.go)     | The `NativeFunc` signature and the `Context`/`Env` structs your runtime code receives.                                                                        |
+| 6    | [runtime/runtime.go](file:///home/oshankodagoda/Projects/ballerina-lang-go/runtime/runtime.go)                 | How the Runtime boots up, calls module initializers, and dispatches to the BIR interpreter.                                                                   |
+| 7    | [platform/pal/platform.go](file:///home/oshankodagoda/Projects/ballerina-lang-go/platform/pal/platform.go)     | The PAL interface — the wall between your code and the OS.                                                                                                    |
+| 8    | [platform/palnative/pal.go](file:///home/oshankodagoda/Projects/ballerina-lang-go/platform/palnative/pal.go)   | The native implementation — `os.Stdout.Write`, `os.ReadFile`, etc.                                                                                            |
 
 **After these 8 files (~500 lines total), you'll understand how a Ballerina function call goes from source code → compiler symbol → BIR instruction → Go function → OS syscall.** That's the core mental model.
 
