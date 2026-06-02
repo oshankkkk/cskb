@@ -1,4 +1,4 @@
-told antygravity to explain the repo :)
+Told antigravity to explain the repo :)
 ## Ballerina go interpreter
 Instead of running ballerina in the VM, its making our own VM and the compiler for .bal files, so we can compile them into a ballerina IR and run in native ballerina VM written in go.
 #### Interpreter 
