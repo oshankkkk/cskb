@@ -78,12 +78,12 @@ factor → ( expression )
 ```
 ###### Notation rule
 
-```
+```txt
 	LHS                      RHS 
 Non terminals only := terminals | Non terminals
 ```
 
-```
+```txt
 
 > Thats how Backus-Naur comes together, terminals, non-terminals and productions 
 ###### Derivations
@@ -103,7 +103,7 @@ term → NUMBER
 Language grammar design first this seems easy but its actually kinda hard, you can create different combos, you have to test them and see how stuff works recursively. Also there can be multiple correct grammar sets for a language.
 We are going to make the grammar and represent it with BNF
 
-```
+```txt
 ##### Grammar
 ```text
 Expression 1:
@@ -145,7 +145,7 @@ Recursive decent is a top down parser. Its a very common and standard parsing al
 
 When making a grammar for a arithmetic expression something you have to keep in mind is BODMAS. yk that Brackets,Of,Division,Multiplication,Addition thing. The order of operations. So since we are using a top down parser we need the stuff to be done 1st be implemented at the bottom cause thats how top down recursion works.
 
-```
+```txt
 Expression 2:
 
 Each layer goes down and wraps the result in a node object (cause its a syntax TREE we are making) and sends it up
@@ -160,13 +160,14 @@ primary() finds raw tokens → wraps in NumberNode
 ```
 ##### Parsing a arithmetic expression
 
-```
+```txt
 (1 + 2 + 3) * 4
 ```
 ###### How it works
 The parser fibonaccies its down and bubbles up the AST. I generated a stack trace on how the recursion happends step by step. if you dont get this just follow the recursion and write it down with pen and paper idk
 
-```
+```txt
+
 parse() called
 │
 └── calls term()
@@ -322,7 +323,7 @@ term() returns final AST
 ```
 ###### Final AST
 
-```
+```txt
 BinaryNode(
   GroupingNode(
     BinaryNode(

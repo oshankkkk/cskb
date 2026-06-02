@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /home/oshankodagoda/Documents/laptop/quartz log --oneline --follow -- quartz/styles/themes/_index.scss)"
+    ]
+  }
+}
