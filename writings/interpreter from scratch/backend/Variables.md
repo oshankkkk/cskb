@@ -51,8 +51,6 @@ Stack Operations:
 GET_GLOBAL:
     push(globals["x"])
 ```
-
-
 ## Variable Assignment
 
 ```
@@ -64,32 +62,3 @@ SET_GLOBAL "x"
 globals["x"] = peek()
 ```
 
-Notice `SET_GLOBAL` usually doesn't pop in clox.
-
-This allows assignments to behave as expressions:
- 
-```
-print x = 10;
-```
-
-The value remains on the stack.
-
----
-
-# Where Does The Variable Name Go?
-
-Bytecode is just numbers, so variable names are stored in the **constant pool**.
-
-Example:
-
-```text
-Constants:
-0 -> "x"
-1 -> 5
-
-Bytecode:
-OP_CONSTANT 1
-OP_DEFINE_GLOBAL 0
-```
-
-The opcode uses an index into the constants table.

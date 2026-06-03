@@ -22,6 +22,7 @@ cellStyle:
 mainContainerStyle: {}
 
 ```
+
 ```contributionGraph
 title: Working
 graphType: month-track
