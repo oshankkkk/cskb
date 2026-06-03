@@ -1,3 +1,7 @@
+---
+Titles: Virtual Machines
+date: 2026-05-31
+---
 So we are building our own virtual "computer" to run our language code. (we make our own little "RAM" and stuff yk).
 A VM is a program emulating the inner workings on the computer. But we can make that computer specific to this language. yk like we can make a computer that only can execute our programming instructions instead of just executing everything. Thats kind of language VMs in a nutshell. 
 #### Bytecode

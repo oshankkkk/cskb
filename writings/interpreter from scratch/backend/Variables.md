@@ -1,3 +1,7 @@
+---
+Title: Variables
+date: 2026-06-02
+---
 ## Why not keep variables in the stack?
 
 ## Heap (i think)
