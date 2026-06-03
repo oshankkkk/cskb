@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rm /home/oshankodagoda/Documents/laptop/quartz/content)",
+      "Bash(ln -s ../writings /home/oshankodagoda/Documents/laptop/quartz/content)",
+      "Bash(git fetch *)",
+      "Bash(GIT_EDITOR=true git rebase *)"
+    ]
+  }
+}
