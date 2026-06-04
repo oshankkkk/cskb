@@ -17,33 +17,37 @@ References:
 ![[Interpreter from scratch-1779703370444.webp|579]]
 ### Frontend
 #### Lexical Analysis
-The code you write is just a long list of characters. Lexing/Lexical/Scanning analysis breaks that string into tokens. Token are the stuff that the compiler/interpeter actually reads.So tokenization cleans your code and only gets out the actual code. The tokens are also called lexemes 
+It takes you text and removes the noise. The code you write is just a long list of characters. Lexing/Lexical analysis/Scanning breaks that string into tokens according to your languages syntax, Its what separates your variables from the keywords, yk it identifies each of them and converts them into their respective tokens. Token are the stuff that the compiler/interpeter actually reads. The tokens are also called lexemes 
 #### Parsing
 ##### Abstract Syntax Tree (AST)
-Once you have those tokens, the parser takes them and creates the structure of your program. So stuff like scopes works correctly and how everything related to each other. This is called a Abstract Syntax Tree
+The "Parser" takes the long array of tokens from the lexer and makes tree data structure out of it according to the language grammer rules. (kinda like the DOM). This is called a Abstract Syntax Tree
 
 > If your using neovim, you can go :InspectTree and you can actually see the live syntax tree of your code 
 #### Static Analysis
 This is where type checking and compiler errors stuff happen. It checks the Abstract Syntax Tree.
-#### Intermediate Representation (IR)
-The code gets converted into a middle format, not bytecode and not the highlevel language.
-This is like acts interface. this is made so you can plugin in different compilers/interpreters thats made for different architectures like arm and x64. 
 ### Backend
-#### Optimization
-Once the language actually works you can make it fast and all. Thats what this phase is for  
-#### Code Generation
-The code gets translated into something the machine can actually run very low-level instructions the CPU understands. You can either target a real chip (fast but tied to one device) or a made-up "virtual" one called bytecode (slower but works anywhere).
+#### Intermediate Representation (IR)
+Some kind of a representation of the AST maybe bytecode or maybe something else. It depends on the implementation. Bytecode is the most common with interpreters i think. In compilers this acts as a interface, so you can plugin in at  compilers/interpreters thats made for different architectures like arm and x64 to the same frontend
+#### Code Generation / Compilation
+The code gets translated into something low-level instructions the CPU understands. So turning the AST into bytecode happens in this stage as well
+
+> I think depending on the implementation this can be in the frontend as well. 
 #### Virtual Machine
-If bytecode was produced, something needs to actually run it since no real chip understands it. A virtual machine is basically a program that pretends to be that imaginary chip, running the bytecode step by step. It's slower than native code but much more portable.
+Simulation of how the internals work in a computer, our bytecode/intermediate representation runs in this. I could say this is only used for interpeters but then again the java JIT compiles their bytecode so at this point im just gonna say it depends.
 #### Runtime
-Even after the program is compiled and running, the language still needs to provide some services in the background like cleaning up unused memory or keeping track of what type each object is. All of that behind-the-scenes work happening while the program runs is called the runtime.
+Everything that needed for your code to run, the VM, the libs, the garbage collector (if you have one) and any more. Bascially everything that should run so your code than keep running until it stops.
+#### Optimization
+Once the language actually works you can make it fast and all. This part can happen in anyway of the whole process i think.
 
 > This is just a summery, if this is even a little interesting, please go read [the whole chapter](https://craftinginterpreters.com/a-map-of-the-territory.html) (chapter 2) on the actual book. The author goes in depth on all the components, gives examples on how they work, why they exist  and other alternative implementations for these as well. ALSO THE BOOK IS FREE.
 ### Compiled vs Interpreted
 Compilation and interpretation are methods of language implementations, like one can make a [C interpreter](https://github.com/jpoirier/picoc) or a compiler for some originally interpreted language. 
 But the difference is little more complex than the traditional line by line code execute is interpreted while the whole program code execute is compiled thing. Modern languages like of blurs the line of compiled and interpreted implementations. Specially when it comes to "interpreted" stuff.
 
-> Like java is technically both compiled and interpreted, cause it compiled to java bytecode and then runs inside of the JVM. The JVM interprets the code. And then theres tsc(Typescript Compiler), but ts is not compiled! (its transpiled into js and gets JIT compiled in V8)
+> Java being compiled and interpreted, cause it compiled to java bytecode and then runs inside the JVM where they use JIT compilation. And then theres tsc(Typescript Compiler), but ts is not even compiled (its transpiled into js and gets JIT compiled in V8)
+
+### What i know for sure
+We are just reading from the file and translating what we read into something else based on our needs ryt. There different are common methods and concepts of doing that and ppl uses them in different ways to fit their needs.
 #### How to see the difference of the two 
 A compiler basically turns 1 form of code to another form of code, usually something more lower level that what it was originally.( emphasis on the usually part) Thats it when it comes to a compiler. Its just a translator.
 But interpreters  converts the code into some intermediate representation and runs that instead of converting it to machine code.

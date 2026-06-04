@@ -2,8 +2,7 @@
 title: Lexer
 date: 2026-05-20
 ---
-Main reference was crafting interpters 
-Notes on building a lexer
+Notes on building a language tokenizer/lexer from scratch
 ### Lexical analysis
 - Breaking characters into different tokens so the computer can easily understand them.
 - We like move through each character and group them into set of predefined tokens

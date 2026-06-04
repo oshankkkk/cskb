@@ -2,9 +2,8 @@
 Title: Variables
 date: 2026-06-02
 ---
+Notes on implementing global variables
 
-
-## Heap (i think)
 We implement variables in a hashmap, it stores: 
 
 ```
