@@ -3,7 +3,7 @@ id: Interpreter from scratch
 date: 2026-05-20
 title: Creating a interpreter from scratch
 ---
-The Language name is [Giggles](https://github.com/oshankkkk/Giggles), and the file extension is .gg. Its made with Go and the syntax is kind of inspired by [lua](https://www.lua.org/).
+The Language name is [Giggles](https://github.com/oshankkkk/Giggles), and the file extension is .ggs. Its made with Go and the syntax is kind of inspired by [lua](https://www.lua.org/).
 
 References:
 - [Crafting interpreters book](https://craftinginterpreters.com)
@@ -41,16 +41,14 @@ Once the language actually works you can make it fast and all. This part can hap
 
 > This is just a summery, if this is even a little interesting, please go read [the whole chapter](https://craftinginterpreters.com/a-map-of-the-territory.html) (chapter 2) on the actual book. The author goes in depth on all the components, gives examples on how they work, why they exist  and other alternative implementations for these as well. ALSO THE BOOK IS FREE.
 ### Compiled vs Interpreted
-Compilation and interpretation are methods of language implementations, like one can make a [C interpreter](https://github.com/jpoirier/picoc) or a compiler for some originally interpreted language. 
-But the difference is little more complex than the traditional line by line code execute is interpreted while the whole program code execute is compiled thing. Modern languages like of blurs the line of compiled and interpreted implementations. Specially when it comes to "interpreted" stuff.
+Compilation and interpretation are methods of language implementations, like one can make a [C interpreter](https://github.com/jpoirier/picoc) or a compiler for some originally interpreted language. But the difference is little more complex than the traditional line by line code execute is interpreted while the whole program code execute is compiled thing. Modern languages like of blurs the line of compiled and interpreted implementations. Specially when it comes to "interpreted" stuff.
 
 > Java being compiled and interpreted, cause it compiled to java bytecode and then runs inside the JVM where they use JIT compilation. And then theres tsc(Typescript Compiler), but ts is not even compiled (its transpiled into js and gets JIT compiled in V8)
 
 ### What i know for sure
 We are just reading from the file and translating what we read into something else based on our needs ryt. There different are common methods and concepts of doing that and ppl uses them in different ways to fit their needs.
 #### How to see the difference of the two 
-A compiler basically turns 1 form of code to another form of code, usually something more lower level that what it was originally.( emphasis on the usually part) Thats it when it comes to a compiler. Its just a translator.
-But interpreters  converts the code into some intermediate representation and runs that instead of converting it to machine code.
+A compiler basically turns 1 form of code to another form of code, usually something more lower level that what it was originally.( emphasis on the usually part) Thats it when it comes to a compiler. Its just a translator. But interpreters  converts the code into some intermediate representation and runs that instead of converting it to machine code.
 
 > In languages like python  it 1st compiles python code to bytecode(intermediate representation) and runs that through a Virtual Machine
 
