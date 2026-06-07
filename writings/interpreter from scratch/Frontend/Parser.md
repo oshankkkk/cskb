@@ -8,7 +8,6 @@ References
 - [Video bout grammars and parser](https://youtu.be/ENKT0Z3gldE?si=qL2AxzWbKFLekSV6)
 - [Another one i watched on parsers](https://www.youtube.com/watch?v=SToUyjAsaFk)
 - Crafting interpreters by robert nystrom
-
 ## Language grammar
 A language grammars are rules used for producing and recognizing language. In English you can divide a sentence into 3 parts with its grammar.
 
@@ -98,7 +97,6 @@ expression → expression + term
 expression → term
 term → NUMBER
 ```
-``
 
 Language grammar design first this seems easy but its actually kinda hard, you can create different combos, you have to test them and see how stuff works recursively. Also there can be multiple correct grammar sets for a language.
 We are going to make the grammar and represent it with BNF

@@ -9,3 +9,5 @@ Notes on building a language tokenizer/lexer from scratch
 - Its just bunch of if statements, you check each character in the source with if statements and make Token objects and pass source as values
 - You also need to track the line number and column numbers, handle white spaces and quotes and \n stuff.
 - The output is a flat list of token objects
+### Scanning on demand
+

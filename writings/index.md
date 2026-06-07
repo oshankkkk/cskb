@@ -5,6 +5,7 @@ These things are cool:
 - [Neovim](https://neovim.io/)
 - [r/unixporn](https://www.reddit.com/r/unixporn/)
 - [Obsidian](https://obsidian.md/)
+
 These people are cool:
 - [Prime](https://www.youtube.com/@primeagen) 
 - [Theo](https://www.youtube.com/@t3dotgg)

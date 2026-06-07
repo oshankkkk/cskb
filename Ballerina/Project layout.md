@@ -1,12 +1,31 @@
 ---
 Title: Ballerina interpreter
 date: 2026-06-02
+aliases: []
+id: Project layout
+tags: []
 ---
-Trying contribute...., told Gemani to explain the repo :)
 ## Ballerina go interpreter
 Instead of running ballerina in the VM, its making our own VM and the compiler for .bal files, so we can compile them into a ballerina IR and run in native ballerina VM written in go.
-#### Interpreter 
-##### Key dirs and their phases
+### Interpreter 
+#### Phase 1 (sequential across modules):
+- Generate Syntax Tree
+- Generate Abstract syntax tree (AST)
+- Do symbol resolution
+- Do type resolution of top level nodes
+#### Phase 2 (parallel across modules):
+- Do type resolution of inner nodes (function bodies, type narrowing)
+- Semantic analysis
+- Generate Control Flow Graph (CFG)
+- Analyze CFG (reachability, explicit return)
+- Desugar AST
+- Generate BIR (Ballerina intermediate representation)
+Phase 1 must be sequential because a module's symbol/type resolution (finding out the type of a variable) depends on its dependencies' already-resolved symbols. 
+So the compiler must know what variables and stuff in the imported files 1st?
+We need to find cross module dependencies, after we verified those, we can work 
+Phase 2 runs in parallel because after all top-level types are resolved, modules have no remaining cross-module dependencies.
+
+##### Util packages that the actual algorithms are stored in 
 - **`parser`**: Phase 1 of the compiler pipeline Contains code to parse Ballerina source code and transform it into a Syntax Tree.
 - **`ast`**: Phase 2 of the compiler pipeline. Defines the Abstract Syntax Tree (AST) structures for Ballerina nodes and the logic to generate them from the syntax tree.
 - **`semantics`**: Phases 3 to 8 of the compiler pipeline. Contains the core logic for semantic analysis, including symbol resolution, type resolution, type narrowing, reachability analysis, and explicit return analysis.
@@ -14,14 +33,28 @@ Instead of running ballerina in the VM, its making our own VM and the compiler f
 - **`bir`**: Phase 10 of the compiler pipeline. Deals with the Ballerina Intermediate Representation (BIR). This phase translates the desugared AST into BIR, which the interpreter ultimately executes.
 - **`runtime`**: Phase 11 (Execution). This is the interpreter itself, responsible for executing the generated BIR instructions.
 - **`context`**: Contains the compiler's compilation context (e.g., `module_context.go`). It tracks the sequence of interpreter stages, holds symbol/type registries for modules, and manages error boundaries preventing compilation progression if errors are detected.
-##### Utils used by them 
-  • Before the pipeline even starts, projects gathers and organizes all the source files and dependencies.
-  • As the pipeline runs, it uses the shared vocabulary defined in model so the Parser and the Semantic Analyzer are speaking the same language.
-  • When the Semantic Analyzer needs to verify if your code is legally allowed (e.g., assigning a JSON object to a specific Record), it outsources that complex logic to the  semtypes  type engine.              
-  • Finally, when the Runtime Interpreter executes the program, it stores your variables in memory using the structures defined in values and performs exact, error-free financial calculations using decimal .
-###### Projects (The Organizer)
-*   **What it means:** When you write Ballerina code, you usually don't just write one file. You create a "project" with multiple modules, dependencies, and configuration files (like `Ballerina.toml`).
-*   **What it does:** Before the compiler even tries to understand your code, the `projects` package reads your folders, figures out which files belong to which modules, and downloads any external packages your code depends on. It organizes the raw files into a structure the compiler can process.
+
+##### They are orchestrated by these packages
+###### Projects 
+- This is what that managers the whole compilation pipeline. 
+
+```
+cli/cmd/run.go → projects.Load() → loadSingleFileProject()
+→ package_compilation.compileModulesInternal()
+	→ Phase 1 (sequential): resolveTypesAndSymbols()
+		→ parseDocumentsParallel()  -- parallel parsing of .bal files
+		→ buildBLangPackage()     -- AST construction  
+		→ ResolveImports()        -- import symbol resolution
+		→ ResolveSymbols()        -- top-level symbol registration
+		→ ResolveTopLevelNodes()   -- type resolution of top-level nodes
+	→ Phase 2 (parallel): analyzeAndDesugar()
+		→ SemanticAnalysis, CFG creation, desugaring, BIR generation
+```
+
+1. Project loading - Determines project type (build project, bala, workspace, or single file) and creates appropriate project instances
+2. Module/package resolution - Resolves dependencies between modules/packages
+3. Compilation coordination - Triggers the compilation phases in the correct order via package_compilation.go
+
 ###### Model (The Shared Vocabulary)
 *   **What it means:** A compiler has many different stages (the parser, the type-checker, the runtime). They all need a common way to talk about the things in your code.
 *   **What it does:** It holds the blueprints for shared concepts. For example, if you write `int age = 10;`, the compiler needs to track the name `age`. It stores this as a `Symbol`. The `model` package defines what a `Symbol` is, so the type-checker and the interpreter agree on what `age` means.

@@ -1,5 +1,3 @@
-
-
 This document maps out the exact sequence of function calls and file transitions when you execute a Ballerina file using the CLI (`go run ./cli/cmd run path/to/file.bal`). 
 
 The diagram captures the flow from the initial CLI invocation, through the various compilation stages, and finally to the interpreter execution.
