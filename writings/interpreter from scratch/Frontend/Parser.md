@@ -137,11 +137,11 @@ BNF Grammar:
 	            | n | o | p | q | r | s | t | u | v | w | x | y | z
 ```
 #### Recursive Decent Parser
-Recursive decent is a top down parser. Its a very common and standard parsing algorithm and used in compilers like C, Rust and Go. Also javascript V8 uses this as well. 
+Recursive decent is a top down parser. Its a very common and standard parsing algorithm and used in compilers like C, Rust and Go. Also javascript V8 uses this as well. The hierarchy is made with functions, each level as its function and call in a recursive chain.
 
 > This is real shit bn, i wish more ppl where into these stuff
 
-When making a grammar for a arithmetic expression something you have to keep in mind is BODMAS. yk that Brackets,Of,Division,Multiplication,Addition thing. The order of operations. So since we are using a top down parser we need the stuff to be done 1st be implemented at the bottom cause thats how top down recursion works.
+The hierarchy in arithmatic expressions is BODMAS. (The order of operations) So since we are using a top down parser we need the stuff to be done 1st be implemented at the bottom cause thats how top down recursion works.
 
 ```txt
 Expression 2:
@@ -333,9 +333,9 @@ BinaryNode(
   *
   NumberNode(4)
 )
-
 ```
 
 > Another thing is association, which is kind of automatically handled by recursive decent. 
 
-
+#### Pratt Parser
+This is basically a better version of recursion. Instead of having a function in each level of the hierarchy we have a map where we store the hierarchy as values and call the same function recursively and pass those values. So instead you dont get a huge function chain.

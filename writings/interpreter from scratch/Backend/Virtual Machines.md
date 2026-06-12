@@ -39,4 +39,6 @@ An opcode (operation code) is the numeric identifier that tells the virtual‑ma
 After the opcode there are the oprands (opcode arguments) for those opcodes, not all opcodes has them, they are just the next value in the bytecode. Just like opcodes they are also stored in a separate data structure like a array and put into bytecode through the compilation process.
 #### What are 
 what are words, it what crafting interpreters calls chucks i think. 
- 
+
+> https://andreabergia.com/series/stack-based-virtual-machines/ A very very good resource
+

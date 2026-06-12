@@ -16,14 +16,12 @@ kanban-plugin: board
 
 ## Giggles
 
-- [ ] make the lazy lexer, cozy coding ( record coding )
-- [ ] make the parser for the other oprations
 - [ ] ai gen grammer for the behaviour
-- [ ] Use tests in this project
 
 
 ## Current
 
+- [ ] FINISH PROJECT
 - [ ] Ballerina contribute (2-3 contirbutions)
 - [ ] Make youtube vids (1 per week ,post on monday)
 
@@ -31,7 +29,6 @@ kanban-plugin: board
 ## Done
 
 **Complete**
-- [x] Make the lexer and parser with clox
 
 
 ## Bonus
@@ -55,6 +52,10 @@ kanban-plugin: board
 
 ## Archive
 
+- [x] make the parser for the other oprations
+- [x] Make the lexer and parser with clox
+- [x] Use tests in this project
+- [x] make the lazy lexer, cozy coding ( record coding )
 - [x] leetcode arrays with blog start, DSA
 - [x] ballerina compiler understand start
 - [x] refresh interpreter blog into a stable state

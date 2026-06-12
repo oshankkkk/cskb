@@ -8,6 +8,7 @@ produce + mutate + coordinate with external logic
 If a value is important, it should be: returned explicitly, not stored implicitly
 Make data flow visible in the code
 
+- Create your wont type when need in data structs for multiple values
 
 
 

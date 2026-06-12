@@ -8,7 +8,9 @@ For a long time until very recently, ive only been using basic Chatgpt from the 
 
 After that i bought chatgpt plus for cheap off a friend for 2 months, and used it with the VScode extention, it significantly improved the overall vibes. Then i switched to antigravity CLI recently and but the limits are really bad compared to how they where with the agy editor, so now im moving to opencode and using some free models i found on openrouter.
 
-Found out you can change themes on opencode, and everything oddly looks like if antigravity and lazyvim had a baby, I think this is going to be the best one yet. 
+Found out you can change themes on opencode, and everything oddly looks like if antigravity and lazyvim had a baby, I think this is going to be the best one yet.  
 
-> https://youtu.be/e9j2iEwJru0?si=5vaMrIO-BqDjGyVz
+Free models are a pain in the ass to use, fuk
+
+>[Ai coding patterns thing i found](https://lexler.github.io/augmented-coding-patterns/)
 
