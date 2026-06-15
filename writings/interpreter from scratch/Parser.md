@@ -1,6 +1,8 @@
 ---
 title: Parser
 date: 2026-05-24
+tags:
+  - frontend
 ---
 Notes on building the language parser from scratch.
 

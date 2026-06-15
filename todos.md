@@ -8,6 +8,7 @@ kanban-plugin: board
 
 - [ ] Find a issue in frontend BUT understand the issue 1st.
 - [ ] Try to Understand what functions are called when .bal is tokenised and made into a AST
+- [ ] Ballerina contribute (2-3 contirbutions)
 - [ ] What are the semantic ballerina checks in? (This is a big task)
 - [ ] Use the compiler and find bugs.
 - [ ] Understand corpus and golden file thing.
@@ -16,14 +17,13 @@ kanban-plugin: board
 
 ## Giggles
 
-- [ ] ai gen grammer for the behaviour
+- [ ] Read and take notes in compiler in go
 
 
-## Current
+## today
 
-- [ ] FINISH PROJECT
-- [ ] Ballerina contribute (2-3 contirbutions)
 - [ ] Make youtube vids (1 per week ,post on monday)
+- [ ] understand zen browser customisations
 
 
 ## Done
@@ -31,15 +31,10 @@ kanban-plugin: board
 **Complete**
 
 
-## Bonus
-
-- [ ] finish parser and lexer by noon
-- [ ] read ai coding patterns and write bout it
-- [ ] try and code the talktalk project
-
-
 ## After
 
+- [ ] try and code the talktalk project
+- [ ] read ai coding patterns and write bout it
 - [ ] agent manager contribute
 - [ ] ml project or somthing else
 - [ ] leetcode
@@ -84,9 +79,10 @@ kanban-plugin: board
 	- mark doesnt know
 - [x] buy oshan domaain
 - [x] setup quatz obsidian
+- [ ] finish parser and lexer by noon
 
 %% kanban:settings
 ```
-{"kanban-plugin":"board","list-collapse":[false,null,null,false,null,false]}
+{"kanban-plugin":"board","list-collapse":[false,null,null,false,false]}
 ```
 %%

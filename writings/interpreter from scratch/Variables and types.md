@@ -1,9 +1,12 @@
 ---
 Title: Variables
 date: 2026-06-02
+tags:
+  - frontend
+  - backend
 ---
-Notes on implementing global variables
-
+Giggles has both local and global variables.
+### Implementing a type system
 We implement variables in a hashmap, it stores: 
 
 ```

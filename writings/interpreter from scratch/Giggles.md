@@ -1,3 +1,6 @@
+---
+Title: Giggles
+---
 ### What i want this to be
 
 ### Features

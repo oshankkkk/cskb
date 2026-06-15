@@ -1,6 +1,8 @@
 ---
 title: Lexer
 date: 2026-05-20
+tags:
+  - frontend
 ---
 Notes on building a language tokenizer/lexer from scratch
 ### Lexical analysis
