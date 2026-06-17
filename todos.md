@@ -4,26 +4,16 @@ kanban-plugin: board
 
 ---
 
-## Ballerina
-
-- [ ] Find a issue in frontend BUT understand the issue 1st.
-- [ ] Try to Understand what functions are called when .bal is tokenised and made into a AST
-- [ ] Ballerina contribute (2-3 contirbutions)
-- [ ] What are the semantic ballerina checks in? (This is a big task)
-- [ ] Use the compiler and find bugs.
-- [ ] Understand corpus and golden file thing.
-- [ ] Dive deeper into the test failing thing.
-
-
 ## Giggles
 
 - [ ] Read and take notes in compiler in go
 
 
-## today
+## After
 
 - [ ] Make youtube vids (1 per week ,post on monday)
 - [ ] understand zen browser customisations
+- [ ] script for pratt parser on youtube
 
 
 ## Done
@@ -31,7 +21,7 @@ kanban-plugin: board
 **Complete**
 
 
-## After
+## Backlog 2
 
 - [ ] try and code the talktalk project
 - [ ] read ai coding patterns and write bout it
@@ -41,6 +31,17 @@ kanban-plugin: board
 - [ ] wo2 run agent manager
 - [ ] wo2 agent manager understand ^dksl
 - [ ] wo2 agent manager blog
+
+
+## Backlog 1
+
+- [ ] Find a issue in frontend BUT understand the issue 1st.
+- [ ] Try to Understand what functions are called when .bal is tokenised and made into a AST
+- [ ] Ballerina contribute (2-3 contirbutions)
+- [ ] What are the semantic ballerina checks in? (This is a big task)
+- [ ] Use the compiler and find bugs.
+- [ ] Understand corpus and golden file thing.
+- [ ] Dive deeper into the test failing thing.
 
 
 ***
@@ -83,6 +84,6 @@ kanban-plugin: board
 
 %% kanban:settings
 ```
-{"kanban-plugin":"board","list-collapse":[false,null,null,false,false]}
+{"kanban-plugin":"board","list-collapse":[null,null,false,true,true]}
 ```
 %%
