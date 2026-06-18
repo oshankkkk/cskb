@@ -1,4 +1,8 @@
-## Notes on why OOP is bad by Brian Willi
+---
+Title: oop bad
+date: 2026-06-17
+---
+## Notes on why OOP is bad by Brian Will
 
 [The video on youtube](https://www.youtube.com/watch?v=QM1iUe6IofM)
 
@@ -13,6 +17,13 @@
 - Thats the problem of OOP
 - I personally have not felt this because i haven't worked on that big of a codebase, but i do hate when you have to gd multiple files to get to the actual code. Also in java i have to think on how this relate than to actually start coding sucks and like having multiple ways to structure it cause class names should feel like english
 - At the end the guy gives some advice on how to make procedural programming more scalable. These advice are really simple and makes sense super quickly. The heart of the video is not about that tho, Its more on how OOP came to be this popular and why it sucks.
+
+> The code looking nice does not mean its Scalable. Those 2 are not the same thing
+##### How to write good procedural code
+- Do not be afriad of long functions. if the function is really long, use private helper functions or anonymous functions so that things are stll seperate.
+- Parameterize as the default way of passing stuff 
+
+
  
  ##### Topics discussed on the video based on the top comment
 - Definition of Terms (Procedural, Imperative, Functional)
