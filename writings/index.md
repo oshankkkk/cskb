@@ -7,9 +7,10 @@ These things are cool:
 - [Obsidian](https://obsidian.md/)
 
 These people are cool:
+- [Tsoding](https://www.youtube.com/@TsodingDaily)
+- Jhonathan Blow
 - [Prime](https://www.youtube.com/@primeagen) 
 - [Theo](https://www.youtube.com/@t3dotgg)
-- [Tsoding Daily](https://www.youtube.com/@TsodingDaily)
 - [Bashbunni](https://www.youtube.com/@bashbunni)
 - [Bread](https://www.youtube.com/@breadOnPenguins)
 - The rest of the people i follow on github

@@ -21,8 +21,9 @@ date: 2026-06-17
 > The code looking nice does not mean its Scalable. Those 2 are not the same thing
 ##### How to write good procedural code
 - Do not be afraid of long functions. if the function is really long, use private helper functions or anonymous functions so that things are still separate.
-- Parameterize as the default way of passing stuff 
- 
+- Parameterize as the default way of passing stuff. 
+- 
+
  ##### Topics discussed on the video based on the top comment
 - Definition of Terms (Procedural, Imperative, Functional)
 - Why does OOP dominate the industry? (Java)
