@@ -3,6 +3,8 @@
 - A function should either produce a value (pure output) OR mutate its own internal state in a predictable way, not  produce + mutate + coordinate with external logic
 - If a value is important, it should be: returned explicitly, not stored implicitly
 - Create your wont type when need in data structs for multiple values
+#### Archtecture is important
+- ask gpt how a pro dev would rewrite
 
 > Make data flow visible in the code
 

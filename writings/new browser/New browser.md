@@ -15,9 +15,13 @@ I installed Zen browser recently and i can defintly see why ppl like it. Theres 
 - [Qutebrowser ](https://qutebrowser.org/)
 
 > Think im gonna forking Zen and see what i can do
-
-
-
+##### Questions
+- How to use surfer
+- Understand what to understand
+- Make the config feature
+- Make the vim feature 
+- How to see my current firefox version and how to update it 
+- why is it npm and not surfer
 
 
 

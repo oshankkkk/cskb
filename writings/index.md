@@ -8,6 +8,7 @@ These things are cool:
 
 These people are cool:
 - [Tsoding](https://www.youtube.com/@TsodingDaily)
+- [Kapathy](https://karpathy.ai/)
 - Jhonathan Blow
 - [Prime](https://www.youtube.com/@primeagen) 
 - [Theo](https://www.youtube.com/@t3dotgg)

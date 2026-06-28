@@ -6,14 +6,10 @@ kanban-plugin: board
 
 ## Giggles
 
-- [ ] Read and take notes in compiler in go
 
 
 ## After
 
-- [ ] Make youtube vids (1 per week ,post on monday)
-- [ ] understand zen browser customisations
-- [ ] script for pratt parser on youtube
 
 
 ## Done
@@ -48,6 +44,8 @@ kanban-plugin: board
 
 ## Archive
 
+- [x] script for pratt parser on youtube
+- [x] Make youtube vids (1 per week ,post on monday)
 - [x] make the parser for the other oprations
 - [x] Make the lexer and parser with clox
 - [x] Use tests in this project
