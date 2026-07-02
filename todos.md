@@ -4,33 +4,14 @@ kanban-plugin: board
 
 ---
 
-## Giggles
-
-
-
-## After
-
-
-
 ## Done
 
 **Complete**
 
 
-## Backlog 2
-
-- [ ] try and code the talktalk project
-- [ ] read ai coding patterns and write bout it
-- [ ] agent manager contribute
-- [ ] ml project or somthing else
-- [ ] leetcode
-- [ ] wo2 run agent manager
-- [ ] wo2 agent manager understand ^dksl
-- [ ] wo2 agent manager blog
-
-
 ## Backlog 1
 
+- [ ] understand the code and make a blog
 - [ ] Find a issue in frontend BUT understand the issue 1st.
 - [ ] Try to Understand what functions are called when .bal is tokenised and made into a AST
 - [ ] Ballerina contribute (2-3 contirbutions)
@@ -38,6 +19,16 @@ kanban-plugin: board
 - [ ] Use the compiler and find bugs.
 - [ ] Understand corpus and golden file thing.
 - [ ] Dive deeper into the test failing thing.
+
+
+## Backlog 2
+
+- [ ] leetcode
+- [ ] wo2 run agent manager
+- [ ] wo2 agent manager understand ^dksl
+- [ ] wo2 agent manager blog
+- [ ] try and code the talktalk project
+- [ ] agent manager contribute
 
 
 ***
@@ -82,6 +73,6 @@ kanban-plugin: board
 
 %% kanban:settings
 ```
-{"kanban-plugin":"board","list-collapse":[null,null,false,true,true]}
+{"kanban-plugin":"board","list-collapse":[false,false,false]}
 ```
 %%
