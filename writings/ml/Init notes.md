@@ -41,17 +41,10 @@ Its a Neural Network introductory project build by adraj kapathy (The guy found 
 
 The whole thing works with a data struct called Values. You can do arithmatic stuff on values like add/divide etc... Then it keeps track on how the values are passed through what ever equations you made. You can see how the values change in a graph and also see deravitives of those values using backpropagation.
 
->"These operations but really all of this is kind of like a fake concept all that matters is we have some kind of inputs and some kind of an output and this output is a function of the inputs in some way and as long as you can do forward pass and the backward pass of that little operation it doesn't matter what that operation is and how composite it is if you can write the local gradients you can chain the gradient and you can continue back propagation so the design of what those functions are is completely up to you" - Kapathy
+"These operations but really all of this is kind of like a fake concept all that matters is we have some kind of inputs and some kind of an output and this output is a function of the inputs in some way and as long as you can do forward pass and the backward pass of that little operation it doesn't matter what that operation is and how composite it is if you can write the local gradients you can chain the gradient and you can continue back propagation so the design of what those functions are is completely up to you" - Kapathy
 
 > Another great NN teaching project [Minitorch](https://minitorch.github.io/)
 
 ![[machine_learning.png]]
-
-
-
-
-
-
-
 
 

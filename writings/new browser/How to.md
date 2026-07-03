@@ -6,3 +6,7 @@ firefox release list https://www.firefox.com/en-US/releases/
 Okay i build firefox from source and ran...now what
 Where do i start
 
+Goal 1 should be navigation
+So where does in firefox it controls navigation
+is this front end, 
+Also where is the keyboard input 

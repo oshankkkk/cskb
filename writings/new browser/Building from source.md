@@ -6,7 +6,6 @@ Mine took 2 hours compile.
 ```
 RAM (16 GB) + Swap (16 GB) = 23 GB total available memory
 ```
-
 #### How to make a swap file in linux
 
 ``` txt
@@ -44,6 +43,7 @@ swapon
 > ill find and explain bout that different filesystem thing later
 
 #### How they work
+
 After you run a the cmd that says "allocate this much memory into this file" you have to run  `mkswap`
 
 >btw you can name the swapfile anything you want, the mkswap cmd is what turns it into a actual swap file
