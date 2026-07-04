@@ -13,7 +13,7 @@ I installed Zen browser recently and i can defintly see why ppl like it. Theres 
 - [Qutebrowser ](https://qutebrowser.org/)
  The problem is Vimium and tridactyl doesnt work well on certain pages and i HATE the inconsistency, ==we need a browser that supports vim keymaps with ublock origin(qutebrowser+firefox)==.
 
-> Fine, ill do it myself. 
+
 
 
 

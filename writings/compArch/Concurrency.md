@@ -1,6 +1,8 @@
 ---
 date: 2026-07-03
 ---
+
+
 ### Trying to understand concurrency
 >[What every programmer should know about memeory](https://people.freebsd.org/~lstewart/articles/cpumemory.pdf) [coding jesus video about the paper](https://youtu.be/SQpS3NuOFT8?si=no1jCOZCYo4mzhXP), 
 
