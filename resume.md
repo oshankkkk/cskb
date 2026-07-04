@@ -13,7 +13,7 @@ I like software
 - Finish, and finish blog
 #### DSA
 
-#### Adraj kapathy micrograd rewritten in C
+#### Adraj kapathy micrograd rewritten in Go
 #### Universal mouseless navigation tool (idk)
 ---
 
