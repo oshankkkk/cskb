@@ -9,7 +9,27 @@ date: 2026-07-03
 ## Why concurrency had to happen
 
 Go back to the framing in Section 3's intro, which you already covered: CPU core frequency kept climbing through the 90s while memory speed didn't keep pace. 
-That gap is what forced caches to exist in the first place. But there's a second wall that the paper doesn't dwell on explicitly but is implied throughout ==singlecore frequency scaling itself ran into a power/heat ceiling in the mid-2000s.== You can't just keep cranking clock speed; power scales with frequency (and worse, with voltage squared — the paper mentions this exact relationship in the DDR2/DDR3 discussion: `Power = Capacity × Voltage² × Frequency`).
+https://youtu.be/3RvkfuXUv1c?si=Ak62SbF_jXQ6yn_Q
+[good](https://youtu.be/hwTYDQ0zZOw?si=vh4_ZSU_MHiLPRXC)
+---
+### Invention of threads
+
+Threads are best understood as a solution to concurrency, 
+:
+For most of computing history (1960s–early 2000s), there were only single core CPUs
+What multicore CPU does is genuine hardware parallelism and it didn't become mainstream until roughly 2005, when Intel and AMD shipped the first mainstream dualcore chips. 
+
+
+##### A rough timeline
+- **1960s**: Multiprogramming (OS/360, THE) and time-sharing (CTSS, Multics) establish concurrency as a core OS idea, purely to keep a single CPU busy and let multiple users share it.
+- **1970s**: Xerox PARC's Cedar/Mesa environment builds "lightweight processes" for responsive, structured interactive software — an important direct ancestor of the modern thread.
+- **Mid-1980s**: CMU's Mach microkernel formalizes the split between a "task" (an address space/resource container) and a "thread" (a unit of execution within it) — the conceptual model most modern OSes still use.
+- **Early-mid 1990s**: Native thread support goes mainstream — Windows NT (1993) ships with kernel threads built in; POSIX threads (pthreads) are standardized in 1995 for Unix-like systems.
+- **~2005**: Intel and AMD ship the first mainstream dual-core desktop/server CPUs. Only *now* does running threads on genuinely separate execution units become a mass-market reality.
+
+ So threads had roughly **three to four decades of useful life** solving I/O-latency-hiding, responsiveness, and program-structuring problems before multicore hardware gave them a second job: actual parallel speedup. Multicore didn't invent the need for threads — it just added a new, very compelling reason to keep using something that already existed.
+
+
 
 So chip vendors had two levers left: make one core smarter (diminishing returns — pipelines were already deep, out-of-order execution was already aggressive), or put more cores on the die. They chose "more cores." That's the entire reason concurrency became a programmer's problem instead of a hardware team's problem. The transistors kept coming (Moore's Law didn't stop), but they stopped translating into single-thread speed and started translating into *core count*. If your program is single-threaded, it stops getting faster for free. That's "why concurrency" in one sentence: **the hardware stopped giving single-threaded programs a free ride, so software has to explicitly use the parallelism that's sitting there.**
 

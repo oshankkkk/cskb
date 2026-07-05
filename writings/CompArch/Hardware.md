@@ -1,5 +1,5 @@
 ---
-Title: Understanding memory
+Title: Understanding memory hardware
 date: 2026-07-03
 ---
 
