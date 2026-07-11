@@ -1,6 +1,9 @@
 ---
-title: Hey!
+title: Hi
+description: This is my knowledge base for all the stuff i learn bout CS.
 ---
+![[images.jpg]]
+
 These things are cool:
 - [Neovim](https://neovim.io/)
 - [r/unixporn](https://www.reddit.com/r/unixporn/)
@@ -8,18 +11,13 @@ These things are cool:
 
 These people are cool:
 - [Tsoding](https://www.youtube.com/@TsodingDaily)
+- Terry davis
 - [Kapathy](https://karpathy.ai/)
 - Jhonathan Blow
 - [Prime](https://www.youtube.com/@primeagen) 
 - [Theo](https://www.youtube.com/@t3dotgg)
 - [Bashbunni](https://www.youtube.com/@bashbunni)
 - [Bread](https://www.youtube.com/@breadOnPenguins)
-- The rest of the people i follow on github
-
-Things i wanna try:
-- Lisp
-- Rust
-- NixOS 
 
 > My friends and i meet weekly to talk bout these stuff, if your interested send a mail to oshankodagoda200667@gmail.com
 
