@@ -2,8 +2,6 @@
 title: Hi
 description: This is my knowledge base for all the stuff i learn bout CS.
 ---
-![[images.jpg]]
-
 These things are cool:
 - [Neovim](https://neovim.io/)
 - [r/unixporn](https://www.reddit.com/r/unixporn/)
@@ -23,4 +21,4 @@ These people are cool:
 
 https://youtube.com/shorts/u1AN5n6jo_w?si=SGQmiqq27OTNJHxM
 
-
+![[terry.jpg]]
