@@ -7,9 +7,6 @@ title: Hi
 <h2 align="center",>
 This is a knowledge base for all the stuff i learn bout CS.
 </h2>
----
-
-## This is a knowledge base for all the CS related stuff i learn
 
 These things are cool:
 - [Neovim](https://neovim.io/)
