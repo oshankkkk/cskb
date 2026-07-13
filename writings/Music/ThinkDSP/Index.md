@@ -2,18 +2,23 @@
 Title: Notes on ThinkDSP by Allen Downey
 date: 2026-07-11
 ---
-#### Core
-Ch 1 — Sounds and signals: sampling rate, what a waveform is. Foundation, don't skip.
-Ch 2 — Harmonics: what a spectrum is, how sounds decompose into frequencies. This is where the mental shift from "audio = wiggly line" to "audio = mixture of frequencies" happens — that shift is the whole ballgame.
-Ch 5 — Autocorrelation: directly relevant to tempo detection. Understanding "how does a signal correlate with a delayed copy of itself" is literally the mechanism behind finding periodicity/beat.
-Ch 7 — Discrete Fourier Transform (DFT/FFT): non-negotiable. This is the math behind the spectrogram and the phase vocoder both.
-Ch 8 — Filtering and Convolution: useful for onset detection and understanding windowing (why you chop audio into overlapping chunks before FFT-ing).
-#### Skim or skip
-Ch 3 (non-periodic signals), Ch 4 (noise): nice intuition-builders but not load-bearing for this project.
-Ch 6 (Discrete Cosine Transform): that's more relevant to audio compression (MP3) and MFCCs (speech/genre classification), not tempo/key/time-stretch. Skip.
-Ch 9 (differentiation/integration), Ch 10 (LTI systems): good to know eventually as a DSP person, not required to ship AutoMix.
+## ThinkDSP 
+
+| Chapter    | Topic                                | Priority  | Details                                                                                                                           |
+| ---------- | ------------------------------------ | --------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| 1          | Sounds and Signals                   | Core      | Learn sampling rate, waveforms, and the fundamentals of digital audio. (fundamentals)                                             |
+| 2          | Harmonics                            | Core      | Understand spectra and frequency decomposition. The key mental shift from "audio = waveform" to "audio = mixture of frequencies." |
+| 3          | Non-periodic Signals                 | Skim/Skip | Useful intuition, but not essential for this project.                                                                             |
+| 4          | Noise                                | Skim/Skip | Nice background knowledge, but not load-bearing.                                                                                  |
+| 5          | Autocorrelation                      | Core      | Directly relevant to tempo detection. Correlating a signal with delayed copies reveals periodicity and beats.                     |
+| 6          | Discrete Cosine Transform (DCT)      | Skip      | More relevant to audio compression (MP3) and MFCCs for speech/genre classification than tempo, key detection, or time-stretching. |
+| 7          | Discrete Fourier Transform (DFT/FFT) | Core      | Essential. The mathematical foundation of spectrograms and the phase vocoder.                                                     |
+| 8          | Filtering and Convolution            | Core      | Important for onset detection, filtering, and understanding windowing before applying the FFT.                                    |
+| 9          | Differentiation & Integration        | Skip      | Good DSP knowledge for the future, but not required for AutoMix.                                                                  |
+| 10<br><br> | Linear Time-Invariant (LTI) Systems  | Skip      | Valuable later as a DSP engineer, but unnecessary to complete AutoMix.                                                            |
 
 > The book mentions stuff quickly and moves on. Asked Claude to read each chapter and give me the actual theory underneath each sentence, including the stuff the book assumes you already know.
+
 ### Chapter 01 summery
 
 - A signal is a measured quantity varying over time (or space), and it can be looked at two equivalent ways: as a shape over time (waveform, time domain) or as a mixture of frequencies (spectrum, frequency domain).
@@ -32,3 +37,12 @@ Ch 9 (differentiation/integration), Ch 10 (LTI systems): good to know eventually
 - The FFT's output is naturally complex-valued because each frequency component genuinely needs two numbers to describe it (amplitude and phase), and complex numbers are simply the standard, convenient mathematical container for exactly that kind of amplitude-and-phase pair.
 
 - A Spectrum can be directly edited as an array of these complex values (scaling amplitudes, zeroing out ranges of frequencies), and this direct manipulation is the actual mechanism underneath the filtering operations introduced in chapter 1.
+### Chapter 05 summery
+
+- Correlation is a precise, computable measure of how much knowing one variable tells you about another, built from covariance (do two variables move together) normalized by their individual spreads (standard deviations), always landing between -1 and 1.
+
+- Serial correlation and autocorrelation apply this same idea to a single signal compared against shifted copies of itself, revealing how strongly a signal's past predicts its future, and this behaves very differently across noise types: near zero for uncorrelated (white) noise, near one for Brownian noise, and smoothly in between for pink noise depending on its beta parameter.
+
+- Autocorrelation is a genuinely superior tool for estimating the pitch of a periodic signal compared to reading a peak off a plain spectrum, because it sidesteps the fundamental time-versus-frequency resolution tradeoff (the Gabor limit) that a short segment's spectrum suffers from, by measuring self-similarity at different time shifts instead of frequency content directly.
+
+- Correlation, once you strip away mean-centering and standardization, is mathematically identical to a vector dot product, and a dot product between two normalized vectors is exactly the cosine of the angle between them, which is the deep reason a sine wave's correlation with a phase-shifted copy of itself traces out a cosine curve as that phase offset changes.
