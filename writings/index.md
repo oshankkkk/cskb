@@ -25,30 +25,8 @@ These people are cool:
 
 > My friends and i meet weekly to talk bout these stuff, if your interested send a mail to oshankodagoda200667@gmail.com
 
-[Wise words from Prime](https://youtube.com/shorts/u1AN5n6jo_w?si=SGQmiqq27OTNJHxM)
-[More wise words from Prime](https://youtube.com/shorts/u1AN5n6jo_w?si=SGQmiqq27OTNJHxM)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- [Wise words from Prime](https://youtu.be/P0XSS2Xst-U?si=TaUnyJznBQeHjsOo)
+- [More wise words from Prime](https://youtube.com/shorts/u1AN5n6jo_w?si=SGQmiqq27OTNJHxM)
 
 ![[terry.jpg]]
 
