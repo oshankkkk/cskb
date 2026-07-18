@@ -5,7 +5,7 @@ tags: []
 title: Hi
 ---
 <h2 align="center",>
-This is a knowledge base for all the stuff i learn bout CS.
+CS knowledge base
 </h2>
 
 These things are cool:
