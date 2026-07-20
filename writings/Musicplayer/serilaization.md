@@ -1,3 +1,7 @@
+---
+Title: Understanding serialization
+date: 2026-07-20
+---
 ##### Serialization and deserialization
 Serialization is the process of converting an object or data structure into a sequence of bytes so it can be saved to a file, database or shared between processes or networks. Later, those bytes can be converted back into the original object. This reverse process is called deserialization.
 
