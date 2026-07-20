@@ -4,17 +4,11 @@ date: 2026-07-19
 ---
 Programs are build with functions. When people started build computer networks they eventually found a way tried to run programs through them.
 Why not call functions over the network ryt. Also make the transition seemless so those remote calls feels native to the caller. This is the start for Remote Procedual Call. Then when computer nextworks start to grow and become the internet, servers needed be open to clients and not tightly coupled to them, so Representative State Transfer Protocal was born. These are universally agreed upon patterns that are used in networks to communicate and are implemented through serveral mediums (mostly RPC, REST only works with HTTP versions). 
-
-
 #### How TCP works
-Https server takes bytes from tcp connections parses and makes the response according to the RFC. How does TCP works.
+Https server takes bytes from tcp connections parses and makes the response according to the RFC. How does TCP works. It uses serialization.
 #### TCP vs Unix domain sockets
 We can use TCP for interprocess communication, we open 2 tcp sockets and talk, we get network overhead? why?
 Why dont we get that from unix domain sockets. Why do they seem to replace each other. why is TCP a standard in learning network projects in scratch.
-
-
-
-
 ### GPT roadmap to build a RPC 
 A simple request response RPC connection to connect C backend to a typescript tui frontend.
 #qustion can we use gRPC
