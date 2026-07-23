@@ -15,5 +15,4 @@ Serialization is used whenever data needs to leave your program's memory whether
 
 Not every sequence of bytes on disk is the result of serializing an object in your program. A random binary blob is just bytes. A compiled executable (.exe, ELF binary) is machine code and metadata, not a serialized C struct. But whenever you're taking structured data — objects, structs, arrays, maps — and storing or transmitting it, you're using some form of serialization.
 
-<iframe title="RPC from scratch in C" src="https://www.youtube.com/embed/PIqHAythNO4?feature=oembed" height="113" width="200" allowfullscreen="" allow="fullscreen" style="aspect-ratio: 1.76991 / 1; width: 40%; height: 40%;"></iframe>
 

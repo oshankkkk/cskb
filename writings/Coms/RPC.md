@@ -1,14 +1,19 @@
 ---
-Title: Network coms
+Title: Understanding RPC
 date: 2026-07-19
 ---
 Programs are build with functions. When people started build computer networks they eventually found a way tried to run programs through them.
-Why not call functions over the network ryt. Also make the transition seemless so those remote calls feels native to the caller. This is the start for Remote Procedual Call. Then when computer nextworks start to grow and become the internet, servers needed be open to clients and not tightly coupled to them, so Representative State Transfer Protocal was born. These are universally agreed upon patterns that are used in networks to communicate and are implemented through serveral mediums (mostly RPC, REST only works with HTTP versions). 
-#### How TCP works
-Https server takes bytes from tcp connections parses and makes the response according to the RFC. How does TCP works. It uses serialization.
-#### TCP vs Unix domain sockets
-We can use TCP for interprocess communication, we open 2 tcp sockets and talk, we get network overhead? why?
-Why dont we get that from unix domain sockets. Why do they seem to replace each other. why is TCP a standard in learning network projects in scratch.
+Why not call functions over the network ryt. Also make the transition seemless so those remote calls feels native to the caller. This is the start for Remote Procedual Call.
+
+>Then when computer nextworks start to grow and become the internet, servers needed be open to clients and not tightly coupled to them, so Representative State Transfer Protocal was born. These are universally agreed upon patterns that are used in networks to communicate and are implemented through serveral transport mediums (mostly RPC, REST only works with TCP versions). 
+
+<iframe title="RPC from scratch in C" src="https://www.youtube.com/embed/PIqHAythNO4?feature=oembed" height="113" width="200" allowfullscreen="" allow="fullscreen" style="aspect-ratio: 1.76991 / 1; width: 40%; height: 40%;"></iframe>
+
+| Part                  | Timestamp | Description                                          |
+| :-------------------- | :-------: | :--------------------------------------------------- |
+| Serialization         |   02:31   | Converting complex data structures into byte streams |
+| Server Implementation |   19:11   | Setting up state, mutexes, and request endpoints     |
+| Client Implementation |   44:55   | Connecting and executing remote procedure calls      |
 ### GPT roadmap to build a RPC 
 A simple request response RPC connection to connect C backend to a typescript tui frontend.
 #qustion can we use gRPC
@@ -18,8 +23,8 @@ A simple request response RPC connection to connect C backend to a typescript tu
 Common choices are TCP sockets, Unix sockets, HTTP, WebSockets.
 
 > TCP is apperently best for learning.
-#### Communication stratergy
-When we pass bytes to each other there should be a format for the computers in the network to read those bytes and get the correct info. yk a protocal (like how we do for TCP with HTTP). You can make your own or use something like JSON for this. Also we should decide the schema for this protocal. This is called a contract.
+#### Message format
+When we pass bytes to each other there should be a format for the computers in the network to read those bytes and get the correct info. yk to make sense of the big data blob. You can make your own or use something like JSON for this. Also we should decide the schema for this protocal. This is called a contract.
 
 - what messages can be sent
 - what they look like
@@ -30,10 +35,6 @@ When we pass bytes to each other there should be a format for the computers in t
 > gRPC uses protocoal buffers (protobuffs) 
 
 A real RPC framework is mostly a system with defined format that encords and decodes data and handle errors to transfer data on the network.
-
-
-
-
 
 | Style | Medium Type                 | Commonly Used In                      | Advantages                                                            | Disadvantages                                                         |
 | ----- | --------------------------- | ------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
