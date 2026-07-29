@@ -1,3 +1,8 @@
+---
+date: 2026-07-29
+Title: webdev timeline
+tags: []
+---
 js was built for netscape in 1990 something and it was a small client side scripting language. ECMA (European Computer Manufacturing Association) made js the new standard for a lanugage to run in the browser, Ecmascript. Netscape got lost in the dot com boom thing and the browser was open sourced as firefox.
 As the browsers and js started to get more features new specs was made. This is the ES version number thing in js. the version of the ECMAScript spec that js implements. 
 Micromedia made action script which then was built into ES4? idk 
@@ -9,6 +14,7 @@ Then we got ES6 which was really important i think thats where you get typecript
 JS was now own by oracle i think.
 Stuff like action script got bought or deprecated?
 what happened jquerry, I wanna know how the history when from here on to 2026. all the details in the correct timeline. all of the js stuff that happend ALL OF IT.
+<iframe title="A Brief History of JavaScript, talk by Brendan Eich (creator of JavaScript)" src="https://www.youtube.com/embed/qKJP93dWn40?feature=oembed" height="113" width="200" allowfullscreen="" allow="fullscreen" style="aspect-ratio: 1.76991 / 1; width: 40%; height: 40%;"></iframe>
 
 ---
 **1995** — Brendan Eich writes JS for Netscape Navigator in ~10 days. Originally called Mocha, then LiveScript, renamed JavaScript as a marketing move riding on Java's hype (Sun was a Netscape partner). Not related to Java technically at all.
