@@ -23,7 +23,14 @@ CS knowledge base (obsidian vault)
 - [Bread](https://www.youtube.com/@breadOnPenguins)
 
 > My friends and i meet weekly to talk bout these stuff, if your interested send a mail to oshankodagoda200667@gmail.com
-###### Cool talks that i like 
 
->[Wise words from Prime](https://youtu.be/P0XSS2Xst-U?si=TaUnyJznBQeHjsOo), [also more wise words from Prime](https://youtube.com/shorts/u1AN5n6jo_w?si=SGQmiqq27OTNJHxM)
+[Wise words from Prime](https://youtu.be/P0XSS2Xst-U?si=TaUnyJznBQeHjsOo), [more wise words from Prime](https://youtube.com/shorts/u1AN5n6jo_w?si=SGQmiqq27OTNJHxM)
+
+
+
+
+
+
+
+
 
