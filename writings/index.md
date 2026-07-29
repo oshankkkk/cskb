@@ -5,15 +5,14 @@ tags: []
 title: Hi
 ---
 <h2 align="center",>
-CS knowledge base
+CS knowledge base (obsidian vault) 
 </h2>
 
-These things are cool:
+###### These things are cool:
 - [Neovim](https://neovim.io/)
 - [r/unixporn](https://www.reddit.com/r/unixporn/)
 - [Obsidian](https://obsidian.md/)
-
-These people are cool:
+###### These people are cool:
 - [Tsoding](https://www.youtube.com/@TsodingDaily)
 - Terry davis
 - [Kapathy](https://karpathy.ai/)
@@ -24,9 +23,7 @@ These people are cool:
 - [Bread](https://www.youtube.com/@breadOnPenguins)
 
 > My friends and i meet weekly to talk bout these stuff, if your interested send a mail to oshankodagoda200667@gmail.com
+###### Cool talks that i like 
 
-- [Wise words from Prime](https://youtu.be/P0XSS2Xst-U?si=TaUnyJznBQeHjsOo)
-- [More wise words from Prime](https://youtube.com/shorts/u1AN5n6jo_w?si=SGQmiqq27OTNJHxM)
-
-![[terry.jpg]]
+>[Wise words from Prime](https://youtu.be/P0XSS2Xst-U?si=TaUnyJznBQeHjsOo), [also more wise words from Prime](https://youtube.com/shorts/u1AN5n6jo_w?si=SGQmiqq27OTNJHxM)
 

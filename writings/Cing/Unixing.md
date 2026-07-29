@@ -2,10 +2,7 @@
 Title: C vs POSIX
 date: 2026-07-23
 ---
-
-**C is a programming language.**
-
-The language itself defines things like:
+C is a programming language and the language itself defines things like:
 
 ```c
 int x = 5;

@@ -1,57 +1,64 @@
----
-Title: Understanding a process
-date: 2026-07-05
----
-So the basic idea is that a "program" is the exe. It is this passive blob of instructions thats in stored in the disk. A process is a execution of that instructions, a instance of it. Like a object to a class yk.
-## Understanding a process
-A process is what a program becomes once its load into the memory, that instant it becomes a process.
-The process may then need additional memory along the way to hold user input, temporary results, and other runtime data.
-The operating system hands out that memory as needed, and the full block of memory assigned to a process called its address space.
 
-## One CPU, Many Processes
+Core memory/process concepts in C 
+##### Process Creation
+- **`fork()`** – creates a child process, duplicating the parent's address space (copy-on-write in practice). Returns 0 in child, child's PID in parent, -1 on error.
+- **`exec()` family** (`execl`, `execle`, `execlp`, `execv`, `execve`, `execvp`) – replaces the current process image with a new program. Doesn't create a new process.
+- **`vfork()`** – older, faster variant of fork that shares the parent's memory until exec/exit (mostly deprecated now, but shows up in older code/exams).
+- **PID / PPID** – `getpid()`, `getppid()` to get process and parent process IDs (ProcessID).
+##### Process Termination
+- **`exit()`** – terminates process, flushes stdio buffers, runs `atexit()` handlers.
+- **`_exit()`** – terminates immediately, no cleanup, no buffer flushing. Used right after fork in the child in many patterns.
+> what are the fork patterns? 
+- **Exit status** – the value passed to exit/`_exit`, retrievable by the parent via wait.
+> need to explain more this
+- **Zombie process** – a terminated child whose exit status hasn't been reaped by the parent yet.
+> why do we need the exit status, what is the exit status, is it a value in memory?, a file? wtf?? i need a full explainaiton from the start.
+- **Orphan process** – a child whose parent terminated before it did (gets reparented, usually to init/PID 1).
+> We need more detailed explainations on process and stuff
+##### Waiting / Synchronization
+- **`wait()`** – blocks until any child terminates, returns its PID and status.
+> so like golangs/ waitgroups?
+- **`waitpid()`** – waits for a specific child (or with flags like `WNOHANG` for non-blocking).
+- **`WIFEXITED`, `WEXITSTATUS`, `WIFSIGNALED`, `WTERMSIG`** – macros to interpret the status returned by wait/waitpid.
 
-Modern operating systems run far more processes than they have CPUs to run them on. The trick is concurrency, processes take turns using the CPU, switching in and out of a queue so quickly that it feels like everything is happening at once. At any given moment, though, only one process is actually executing on a given CPU core everyone else is waiting.
+- **File descriptor inheritance** – child inherits open fds from parent after `fork()` (crucial for how pipes actually work across processes).
 
-The CPU stores  a copy state when each process is bout to switch so once they come back you can reload that state and start from there. This is called context switching.
+i also want details low level from the start explaintions that starts from one corner and gradually explains all of these
 
-Security, A process could read sensitive leftover data from whatever ran before it. If the prior process was hashing a password, for example, fragments of that password might still be sitting in the registers — free for the next process to read.
+## Inter-Process Communication (IPC)
+- **Pipes** – `pipe()` creates an unnamed, unidirectional pipe (two fds: read end, write end). Only works between related processes (e.g., after fork).
+- **Named pipes (FIFOs)** – `mkfifo()`, allow unrelated processes to communicate via a filesystem path.
+- **Dup / dup2** – `dup()`, `dup2()` used to redirect file descriptors (classic pattern for wiring pipe ends to stdin/stdout).
+- **Shared memory** – `shmget()`, `shmat()`, `shmdt()`, `shmctl()` (System V) or `mmap()` with `MAP_SHARED` (POSIX/BSD style).
+- **Message queues** – `msgget()`, `msgsnd()`, `msgrcv()`.
+- **Semaphores** – `sem_init()`, `sem_wait()`, `sem_post()` (POSIX) or `semget()`/`semop()` (System V) — used for synchronization, not data transfer.
+- **Sockets** – for IPC across processes/machines (`socketpair()` for local IPC specifically).
+## Signals
+- **`signal()` / `sigaction()`** – register a handler for a signal.
+- **`kill()`** – send a signal to a process.
+- **`raise()`** – send a signal to yourself.
+- **Common signals** – `SIGCHLD` (child terminated), `SIGKILL`, `SIGTERM`, `SIGINT`, `SIGSEGV`, `SIGPIPE` (writing to a pipe with no reader).
+- **`sigprocmask()`** – block/unblock signals.
+## Dynamic Memory Management
+- **`malloc()` / `calloc()` / `realloc()` / `free()`** – heap allocation basics.
+- **Memory leaks** – forgetting to `free()`.
+- **Dangling pointers** – using memory after it's freed.
+- **Double free** – freeing the same pointer twice.
+- **`brk()` / `sbrk()`** – low-level system calls that adjust the heap's program break (what malloc uses under the hood).
+- **`mmap()` / `munmap()`** – map memory directly (files or anonymous memory), often used for large allocations instead of the heap.
+## Process Memory Layout
+- **Text segment** – compiled code.
+- **Data segment** – initialized globals/statics.
+- **BSS segment** – uninitialized globals/statics.
+- **Heap** – dynamically allocated memory, grows upward.
+- **Stack** – local variables, function call frames, grows downward.
+- **Address space / virtual memory** – each process has its own, mapped by the OS/MMU.
+## Related Odds and Ends
+- **`system()`** – runs a shell command (internally forks/execs).
+- **Race conditions** – concurrent access issues between parent/child, often the whole point of `wait()`.
+- **Copy-on-write (COW)** – how modern `fork()` avoids actually copying all memory immediately.
 
-Correctness, Even a well-behaved process that has no interest in snooping on prior data still has to use the registers to do its own work, which means overwriting whatever was there. When the original process eventually gets the CPU back, the exact state it was in when it got interrupted is gone.
-
-> Process is the execution of instructions and its execution context.
-## A Process Is a Context
-
-At this point it's fair to ask: what asstually makes up a process, besides the address space and the CPU state described above? The answer is: quite a lot more. A process typically also owns a list of open files and any I/O devices allocated to it.
-
-Put it all together and a process stops looking like a single, simple thing. It's better described as an entire **context** — a bundle of state that's isolated from every other process running on the machine. That's also a tidy explanation for why the mechanism we just covered is called a *context* switch: switching processes means swapping out the entire context the system is currently operating in.
-
-It also explains something that might otherwise seem strange: two processes can run the exact same executable and still produce completely different results, because the outcome doesn't depend only on the instructions — it depends on the context those instructions run in. It's a bit like answering "in what context?" when someone asks you an ambiguous question. The same instructions, in a different context, can mean something different.
-
-Process are stores in a data structure called the **Process Control Block**, or **PCB**. Every process gets one, and it typically includes:
-
-- A unique **process ID**
-- The process's current **state** (more on this below)
-- Its **CPU state** — program counter, general-purpose registers, instruction register, flags, and (depending on the hardware) things like a stack pointer, index registers, or accumulators. This is exactly the data captured and restored during a context switch.
-- **Memory management information** — at minimum, the boundaries of the process's address space, so the OS can prevent one process from reading or writing into another's memory, and so it knows which memory regions are free when a new process needs one.
-- Other allocated resources, such as open files and I/O devices.
-
-The PCB isn't the process itself — it's a representation of the process. It's the repository of everything the OS needs to start a process for the first time or resume it later, plus some bookkeeping information on top. And it's this representation, not the process itself, that actually sits in the scheduling queue.
-
-
-
-
-
-
-
-
-
-
-
-
-References: [Core dummped OS explaintions series](https://youtu.be/7ge7u5VUSbE?si=bzpH-FSRue8z1jw4)
 # Processes in C — From the Kernel Up
-
-## 0. What a "process" actually is
 
 Forget C for a second. To the kernel, a process is just an entry in a table — on Linux it's a `struct task_struct`, sitting in kernel memory, that bundles:
 
@@ -81,15 +88,13 @@ Step by step, on the kernel side:
 5. Puts the child on the scheduler's run queue.
 6. **Both processes now resume execution at the exact same point** — right after the `fork()` call — because the child's copied register state has the same program counter as the parent had.
 
-That last point is the whole trick behind "`fork()` returns twice." It's not magic — there are just two `task_struct`s now, each independently resuming from the same saved instruction pointer.
+That last point is the whole trick behind "`fork()` returns twice." It's not magic — there are just two `task_struct`s now, each independently resuming from the same saved instruction pointer. The return value is how each process tells itself apart:
 
-The return value is how each process tells itself apart:
-
-| Who | Return value |
-|---|---|
-| Parent | child's PID (a positive int) |
-| Child | `0` |
-| Either, on failure | `-1`, no child created |
+| Who                | Return value                 |
+| ------------------ | ---------------------------- |
+| Parent             | child's PID (a positive int) |
+| Child              | `0`                          |
+| Either, on failure | `-1`, no child created       |
 
 Why `0` for the child and not its own PID? Because the child doesn't need `fork()` to tell it its PID — it can call `getpid()` any time. The parent, on the other hand, has no way to learn the child's PID except through the return value. `0` is just a sentinel meaning "you are the copy."
 
@@ -138,7 +143,7 @@ if (pid == 0) {
 ```
 
 ### B. fork + wait, synchronous ("run this and block until it's done")
-Same as A, structurally — this is literally what `system()` does under the hood.
+Same as A, structurally this is literally what `system()` does under the hood.
 
 ### C. fork only, no exec ("parallel copies of myself")
 Used for preforking worker pools (old-school web servers): fork N children, each loops on `accept()` independently, no `exec` at all — they keep running the *same* binary.
@@ -161,6 +166,136 @@ if (fork() > 0) exit(0);      // (3) that child ALSO dies
 daemon_main();
 ```
 Why the second fork? Step (2) makes the child a *session leader*, which means it could later acquire a controlling terminal. Killing it in step (3) guarantees the surviving grandchild can never become one — it's permanently detached. This is exactly how orphaning (§10) gets used deliberately instead of by accident.
+
+
+
+> The goal is to make a process that has a new session but not the session leader. we the 1st child is not the leader but also not in a new session, when you make a new session you become the new leader so you the 2nd child doesnt work as well. the child however is not a leader but is in a different session(the 2nd childs one) so it works
+
+ Kind of, after `setsid()`, the **first child becomes a session leader**:
+
+```
+Before setsid():
+
+First child:
+PID = 2000
+PGID = 1000
+SID  = 1000
+
+(not a process group leader)
+```
+
+It is allowed to call:
+
+```c
+setsid();
+```
+
+because it is **not a process group leader**.
+
+After `setsid()`:
+
+```
+First child:
+
+PID  = 2000
+PGID = 2000
+SID  = 2000
+
+(session leader)
+```
+
+So yes, you are right that:
+
+> when you make a new session you become the new leader
+
+Exactly.
+
+---
+
+Now the second fork:
+
+```
+First child (session leader)
+PID = 2000
+SID = 2000
+      |
+      fork()
+      |
+      +---- Parent
+      |
+      +---- Child
+```
+
+The second child gets a copy:
+
+```
+Second child:
+
+PID  = 3000
+PGID = 2000
+SID  = 2000
+```
+
+Notice:
+
+```
+PID != SID
+3000 != 2000
+```
+
+Therefore:
+
+```
+Second child is NOT a session leader
+```
+
+but it is still inside the new session:
+
+```
+Session 2000
+|
++-- first child (dies)
+|
++-- second child (daemon)
+```
+
+So your summary is basically correct:
+
+> The first child is not a leader but is not in a new session. After `setsid()` it becomes a new session leader. The second child inherits that new session but is no longer the session leader.
+
+One small wording fix:
+
+> "the 2nd child's one"
+
+The second child **does not create a new session**. It inherits the session created by the first child.
+
+The flow is:
+
+```
+Original process
+        |
+        fork()
+        |
+        v
+First child
+(not process group leader)
+        |
+        setsid()
+        |
+        v
+New session leader
+        |
+        fork()
+        |
+        v
+Second child
+(not session leader, but in the new session)
+        |
+        daemon
+```
+
+That is the entire trick. The second fork is not about making a new session; it is about throwing away the session leader role while keeping the new session.
+
 
 ### E. fork bomb (anti-pattern, know it to avoid it)
 ```c
