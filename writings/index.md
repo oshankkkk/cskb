@@ -4,10 +4,12 @@ aliases: []
 tags: []
 title: Hi
 ---
-<h2 align="center",>
+<h2 align="center" style="margin-bottom:0; padding-bottom:0;">
 CS knowledge base (obsidian vault) 
 </h2>
-
+<h6 align="center" style="margin-top:0; padding-top:0;">
+  I find something interesting, I convert to Markdown, I save here.
+</h6>
 ###### These things are cool:
 - [Neovim](https://neovim.io/)
 - [r/unixporn](https://www.reddit.com/r/unixporn/)
