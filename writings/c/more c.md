@@ -1,4 +1,4 @@
-
+1
 Core memory/process concepts in C 
 ##### Process Creation
 - **`fork()`** – creates a child process, duplicating the parent's address space (copy-on-write in practice). Returns 0 in child, child's PID in parent, -1 on error.
