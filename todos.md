@@ -12,6 +12,17 @@ kanban-plugin: board
 
 
 ## music
+## Backlog 2
+
+- [ ] leetcode
+- [ ] wo2 run agent manager
+- [ ] wo2 agent manager understand ^dksl
+- [ ] wo2 agent manager blog
+- [ ] try and code the talktalk project
+- [ ] agent manager contribute
+
+
+## Backlog 1
 
 - [ ] mpv ipc sync with playbar functions
 - [ ] search song list and pics and stuff
@@ -37,6 +48,22 @@ kanban-plugin: board
 - [ ] Use the compiler and find bugs.
 - [ ] Understand corpus and golden file thing.
 - [ ] Dive deeper into the test failing thing.
+
+
+## watch list
+
+- [ ] CRDTs martin.k
+- [ ] How software breaks
+- [ ] You and your Research
+- [ ] CMS systems series
+- [ ] DDA martin.k
+
+
+***
+
+## Archive
+
+>>>>>>> origin/main
 - [x] script for pratt parser on youtube
 - [x] Make youtube vids (1 per week ,post on monday)
 - [x] make the parser for the other oprations
