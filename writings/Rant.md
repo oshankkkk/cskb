@@ -2,7 +2,8 @@
 id: Rant
 date: 2026-05-19
 ---
-Sometime last year, I fell down the [Vim](https://www.youtube.com/watch?v=1UXHsCT18wE) hole. That's where I found Prime's channel
+
+Sometime last year, I fell down the [Vim](https://www.youtube.com/watch?v=1UXHsCT18wE) rabbithole. That's where I found Prime's channel
 
 [Watching him delete entire functions within milliseconds in neovim, typing with his split not labeled keyboard, ](https://youtu.be/88Oy0h3zxW0?si=yBeXI9cRcf_Q1oYX)and talk about SWE stuff I'd never heard of was really interesting (this was on his streams btw not like tutorials or youtube vid).
 

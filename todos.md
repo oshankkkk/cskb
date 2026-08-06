@@ -7,11 +7,29 @@ kanban-plugin: board
 ## Done
 
 **Complete**
+- [x] look at the frontend connect part
+- [x] learn the c error
 
 
-## Backlog 1
+## music
 
+- [ ] mpv ipc sync with playbar functions
+- [ ] search song list and pics and stuff
+- [ ] playlist
+- [ ] liked song
+
+
+***
+
+## Archive
+
+- [ ] wo2 run agent manager
+- [ ] agent manager contribute
 - [ ] understand the code and make a blog
+- [ ] try and code the talktalk project
+- [ ] wo2 agent manager blog
+- [ ] wo2 agent manager understand ^dksl
+- [ ] leetcode
 - [ ] Find a issue in frontend BUT understand the issue 1st.
 - [ ] Try to Understand what functions are called when .bal is tokenised and made into a AST
 - [ ] Ballerina contribute (2-3 contirbutions)
@@ -19,22 +37,6 @@ kanban-plugin: board
 - [ ] Use the compiler and find bugs.
 - [ ] Understand corpus and golden file thing.
 - [ ] Dive deeper into the test failing thing.
-
-
-## Backlog 2
-
-- [ ] leetcode
-- [ ] wo2 run agent manager
-- [ ] wo2 agent manager understand ^dksl
-- [ ] wo2 agent manager blog
-- [ ] try and code the talktalk project
-- [ ] agent manager contribute
-
-
-***
-
-## Archive
-
 - [x] script for pratt parser on youtube
 - [x] Make youtube vids (1 per week ,post on monday)
 - [x] make the parser for the other oprations
@@ -73,6 +75,6 @@ kanban-plugin: board
 
 %% kanban:settings
 ```
-{"kanban-plugin":"board","list-collapse":[false,false,false]}
+{"kanban-plugin":"board","list-collapse":[false,false]}
 ```
 %%
