@@ -9,6 +9,16 @@ kanban-plugin: board
 **Complete**
 
 
+## Backlog 2
+
+- [ ] leetcode
+- [ ] wo2 run agent manager
+- [ ] wo2 agent manager understand ^dksl
+- [ ] wo2 agent manager blog
+- [ ] try and code the talktalk project
+- [ ] agent manager contribute
+
+
 ## Backlog 1
 
 - [ ] understand the code and make a blog
@@ -21,14 +31,13 @@ kanban-plugin: board
 - [ ] Dive deeper into the test failing thing.
 
 
-## Backlog 2
+## watch list
 
-- [ ] leetcode
-- [ ] wo2 run agent manager
-- [ ] wo2 agent manager understand ^dksl
-- [ ] wo2 agent manager blog
-- [ ] try and code the talktalk project
-- [ ] agent manager contribute
+- [ ] CRDTs martin.k
+- [ ] How software breaks
+- [ ] You and your Research
+- [ ] CMS systems series
+- [ ] DDA martin.k
 
 
 ***
@@ -73,6 +82,6 @@ kanban-plugin: board
 
 %% kanban:settings
 ```
-{"kanban-plugin":"board","list-collapse":[false,false,false]}
+{"kanban-plugin":"board","list-collapse":[false,true,true,false]}
 ```
 %%
