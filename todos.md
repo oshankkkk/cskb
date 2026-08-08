@@ -7,11 +7,23 @@ kanban-plugin: board
 ## Done
 
 **Complete**
-- [x] look at the frontend connect part
-- [x] learn the c error
 
 
-## music
+## Internship
+
+- [ ] CMS systems series 2/23
+- [ ] music finish
+- [ ] GPU thing
+- [ ] giggles finish
+
+
+## watch list
+
+- [ ] How software breaks
+- [ ] You and your Research
+- [ ] CRDTs martin.k
+
+
 ## Backlog 2
 
 - [ ] leetcode
@@ -34,6 +46,8 @@ kanban-plugin: board
 
 ## Archive
 
+- [x] look at the frontend connect part
+- [x] learn the c error
 - [ ] wo2 run agent manager
 - [ ] agent manager contribute
 - [ ] understand the code and make a blog
@@ -48,22 +62,6 @@ kanban-plugin: board
 - [ ] Use the compiler and find bugs.
 - [ ] Understand corpus and golden file thing.
 - [ ] Dive deeper into the test failing thing.
-
-
-## watch list
-
-- [ ] CRDTs martin.k
-- [ ] How software breaks
-- [ ] You and your Research
-- [ ] CMS systems series
-- [ ] DDA martin.k
-
-
-***
-
-## Archive
-
->>>>>>> origin/main
 - [x] script for pratt parser on youtube
 - [x] Make youtube vids (1 per week ,post on monday)
 - [x] make the parser for the other oprations
@@ -102,6 +100,6 @@ kanban-plugin: board
 
 %% kanban:settings
 ```
-{"kanban-plugin":"board","list-collapse":[false,false]}
+{"kanban-plugin":"board","list-collapse":[false,null,true,true,true]}
 ```
 %%
