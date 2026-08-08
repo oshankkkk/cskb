@@ -4,7 +4,7 @@ Title: local 1st
 tags: []
 ---
 >https://lofi.so/, https://automerge.org/
-### Local-First Software (Kleppmann, Wiggins, van Hardenberg, McGranaghan — 2019)
+
 Core problem: cloud apps (Google Docs, Trello, Figma) give you seamless collaboration but you don't actually own your data, the server is authoritative, you're a client with a cache. Old-fashioned apps (text editors, local files) give you full ownership but no real-time collaboration. Can we get both tho?
 #### The 7 ideals for "local-first" software
 Treat the device's local disk as the primary copy of data, server as a secondary/backup copy, not the source of truth:

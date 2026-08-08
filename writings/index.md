@@ -4,9 +4,9 @@ aliases: []
 tags: []
 title: Hi
 ---
-<h2 align="center" style="margin-bottom:0; padding-bottom:0;">
-CS knowledge base (obsidian vault) 
-</h2>
+<h4 align="center" style="margin-bottom:0; padding-bottom:0;">
+CS knowledge base 
+</h4>
 
 ###### These things are cool:
 - [Neovim](https://neovim.io/)
