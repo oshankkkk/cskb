@@ -26,6 +26,7 @@ A real-time simulation inspired by *Physarum polycephalum* (slime mold), using t
 
 Developed a full-stack cloud note-taking application with a Go REST API and React/TypeScript frontend, implementing Markdown editing, user authentication, persistent PostgreSQL storage, and Docker-based deployment with a modular client-server architecture.
 
+
 ## Education
 
 **BSc (Hons) Computer Science**  
