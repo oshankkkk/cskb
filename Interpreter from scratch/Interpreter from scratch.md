@@ -54,5 +54,3 @@ A compiler basically turns 1 form of code to another form of code, usually somet
 
 > Theres also stuff like transpilers and JIT compilers which the book explains really well.
 
-
-
