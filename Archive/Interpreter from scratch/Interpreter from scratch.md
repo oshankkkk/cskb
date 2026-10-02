@@ -40,6 +40,7 @@ Everything that needed for your code to run, the VM, the libs, the garbage colle
 Once the language actually works you can make it fast and all. This part can happen in anyway of the whole process i think.
 
 > This is just a summery, if this is even a little interesting, please go read [the whole chapter](https://craftinginterpreters.com/a-map-of-the-territory.html) (chapter 2) on the actual book. The author goes in depth on all the components, gives examples on how they work, why they exist  and other alternative implementations for these as well. ALSO THE BOOK IS FREE.
+
 ### Compiled vs Interpreted
 Compilation and interpretation are methods of language implementations, like one can make a [C interpreter](https://github.com/jpoirier/picoc) or a compiler for some originally interpreted language. But the difference is little more complex than the traditional line by line code execute is interpreted while the whole program code execute is compiled thing. Modern languages like of blurs the line of compiled and interpreted implementations. Specially when it comes to "interpreted" stuff.
 

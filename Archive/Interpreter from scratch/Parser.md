@@ -18,6 +18,7 @@ Sentence:= <Subject> <Verb> <Object>
 ```
 
 Taking the language understanding its structure and breaking it down to its bones layer by layer according to the grammar is called parsing. This means to build one 1st one should actually understand how the grammar works in that language. This gets hard depending on the complexity of the language and how big it is (obviously).
+
 #### Different types of grammars. 
 These systems of rules all can be divide into 3 types.
 ###### Regular Grammars
