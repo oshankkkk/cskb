@@ -31,19 +31,19 @@ So "x86" alone (without "-64") usually implies the original 32-bit architecture,
 ### Understanding ARM
 ARM originally stood for Acorn RISC Machine, developed in the UK by Acorn Computers in the mid-1980s for their Archimedes computers. It was designed from scratch with a totally different philosophy than x86 which uses CISC.
 
-|                   | x86                                        | ARM                                                                                                                |
-| ----------------- | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
-| Design philosophy | CISC (Complex Instruction Set Computer)    | RISC (Reduced Instruction Set Computer)                                                                            |
-| Instructions      | Many, complex, variable-length             | Fewer, simpler, fixed-length                                                                                       |
-| Power use         | Historically power-hungry                  | Designed for efficiency                                                                                            |
-| Business model    | Intel/AMD design **and** manufacture chips | ARM Holdings just **licenses the design** — companies like Apple, Qualcomm, Samsung build their own chips using it |
+|                   | x86                                     | ARM                                                                                                           |
+| ----------------- | --------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| Design philosophy | CISC (Complex Instruction Set Computer) | RISC (Reduced Instruction Set Computer)                                                                       |
+| Instructions      | Many, complex, variable-length          | Fewer, simpler, fixed-length                                                                                  |
+| Power use         | Historically power-hungry               | Designed for efficiency                                                                                       |
+| Business model    | Intel/AMD design and manufacture chips  | ARM Holdings just licenses the design, companies like Apple, Qualcomm, Samsung build their own chips using it |
 
 That licensing model is a big deal it's why ARM chips are everywhere, nearly all smartphones, iPads, Apple Silicon Macs (M1/M2/M3/M4), Raspberry Pis, and increasingly cloud servers (AWS Graviton) all use ARM based designs from different manufacturers, unlike x86 which is basically just Intel and AMD.
 
 But ARM went through its own 32-bit → 64-bit transition too, just with different naming:
 
 - AArch32 (or ARMv7 and earlier) = 32-bit
-- **AArch64** (ARMv8-A onward) = 64-bit, introduced in 2011
+- AArch64 (ARMv8-A onward) = 64-bit, introduced in 2011
 
 ARM is both a company and an ISA family:
 - ARM Holdings is the company (originally Acorn, now owned by SoftBank) that designs the instruction set and licenses it out.

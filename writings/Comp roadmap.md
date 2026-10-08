@@ -2,17 +2,19 @@
 
 1. **Pick your target architecture.** The paper targets 32-bit x86. You'll likely want x86-64 (System V calling convention) or ARM64 if you're on an M-series Mac. This choice affects register names, calling convention, and tag/word sizes, so decide it first.
 - amd64
-1. **Pick your output strategy.** Follow the paper: your compiler emits assembly text, and `gcc` or `as` assembles and links it with a C runtime file. You don't write an assembler or linker.
+2. **Pick your output strategy.** Follow the paper: your compiler emits assembly text, and `gcc` or `as` assembles and links it with a C runtime file. You don't write an assembler or linker.
 - assmeber as
-1. **Build a test harness before any compiler code.** Each test is a Scheme expression plus its expected printed output. A shell or Makefile script compiles each one, runs it, and diffs the result. Every later step adds tests to this suite.
-- i need a test sweat, corpus??
-1. **Decide the shape of your C code.** The paper leans on Scheme's pattern matching and lists, so in C you need replacements:
+3. **Build a test harness before any compiler code.** Each test is a Scheme expression plus its expected printed output. A shell or Makefile script compiles each one, runs it, and diffs the result. Every later step adds tests to this suite.
+
+>The test-driver iterates over the test cases performing the following actions: (1) The input expression is passed to compile-program to produce assembly code. (2) The assembly code and a minimal run-time system (to support printing) are assembled and linked to form an executable. (3) The executable is run and the output is compared to the expected output string. An error is signaled if any of the previous steps fails.
+
+4. **Decide the shape of your C code.** The paper leans on Scheme's pattern matching and lists, so in C you need replacements:
    - an S-expression data type (a tagged union for ints, symbols, pairs, etc.)
    - an arena or bump allocator for compiler-side memory, since you'll never free individual nodes
    - a symbol-interning table
    - a string-builder or `fprintf`-style emitter for assembly output
-1. **Write an S-expression reader in C.** The paper uses Scheme's built-in `read` for the front end and defers writing your own reader to the end. In C you need one immediately, so write a minimal one now (integers, symbols, lists, quote) and extend it as the language grows.
-2. **Write the C runtime stub** (`runtime.c`). It has a `main` that calls your generated entry point and prints the returned value. This grows as the language does.
+5. **Write an S-expression reader in C.** The paper uses Scheme's built-in `read` for the front end and defers writing your own reader to the end. In C you need one immediately, so write a minimal one now (integers, symbols, lists, quote) and extend it as the language grows.
+6. **Write the C runtime stub** (`runtime.c`). It has a `main` that calls your generated entry point and prints the returned value. This grows as the language does.
 ## Phase 1: The core language (paper §3.1–3.12)
 
 Each step is one small feature, compiled and tested before moving on.
@@ -60,5 +62,3 @@ Pick from these once the core works:
 - **Inspect the generated assembly** often, since it's the quickest way to catch tagging and stack-offset bugs.
 - **Resist implementing steps early.** Don't add a garbage collector or register allocation before the basic language works.
 - **Read the paper's step in full before each step**, since each section is short and the design hints are compact.
-
-If you tell me which architecture you're targeting, I can adapt the tagging scheme, calling convention, and register roles for it.
