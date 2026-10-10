@@ -13,4 +13,3 @@ Found out you can change themes on opencode, and everything oddly looks like if 
 Free models are a pain in the ass to use, fuk
 
 >[Ai coding patterns thing i found](https://lexler.github.io/augmented-coding-patterns/)
-
