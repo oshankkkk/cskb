@@ -26,6 +26,3 @@ CS knowledge base
 
 [Wise words from Prime](https://youtu.be/P0XSS2Xst-U?si=TaUnyJznBQeHjsOo), [more wise words from Prime](https://youtube.com/shorts/u1AN5n6jo_w?si=SGQmiqq27OTNJHxM)
 
-CRDT
-Game
-Compiler

@@ -4,42 +4,23 @@ kanban-plugin: board
 
 ---
 
+## Backlog
+
+- [ ] CMS systems series 2/23
+- [ ] Networking/Infra
+- [ ] Algorithms and graphs
+- [ ] Maths and physics
+
+
+## In-Progess
+
+- [ ] Identify N4 automation patterns --> Work
+- [ ] Compilers
+
+
 ## Done
 
 **Complete**
-
-
-## Internship
-
-- [ ] CMS systems series 2/23
-- [ ] music finish
-- [ ] GPU thing
-- [ ] giggles finish
-
-
-## watch list
-
-- [ ] How software breaks
-- [ ] You and your Research
-- [ ] CRDTs martin.k
-
-
-## Backlog 2
-
-- [ ] leetcode
-- [ ] wo2 run agent manager
-- [ ] wo2 agent manager understand ^dksl
-- [ ] wo2 agent manager blog
-- [ ] try and code the talktalk project
-- [ ] agent manager contribute
-
-
-## Backlog 1
-
-- [ ] mpv ipc sync with playbar functions
-- [ ] search song list and pics and stuff
-- [ ] playlist
-- [ ] liked song
 
 
 ***
@@ -100,6 +81,6 @@ kanban-plugin: board
 
 %% kanban:settings
 ```
-{"kanban-plugin":"board","list-collapse":[false,null,false,false,true]}
+{"kanban-plugin":"board","list-collapse":[null,false,false]}
 ```
 %%
