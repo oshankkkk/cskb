@@ -19,7 +19,6 @@ Graphs model maps and navigation (intersections = vertices, roads = edges), soci
 - Weighted: edges carry values like distance or traffic.
 		![[Graphs-1792427902513.webp|430|378x227]]
 - Trees are a type of graph thats connected and acyclic. Removing any edge from a tree disconnects the whole thing, and adding any edge creates a cycle.
-
 #### How computers store graphs
 - Adjacency matrix an n×n grid where entry (i, j) is 1 if an edge exists, else 0. It's simple but uses O(V²) memory, which is wasteful for large graphs.
 		![[Graphs-1792428200645.webp|372x208]]
