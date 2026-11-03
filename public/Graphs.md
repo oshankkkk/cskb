@@ -1,3 +1,4 @@
+> 20/10
 ## What is a graph 
 A graph is a set of vertices (nodes) and edges (connections between pairs of vertices). Formally you write it as sets, e.g. V = {0, 1, 2, 3, 4} and E = {(0,1), (0,2), (0,3), (1,3), (2,3), (3,4)}. It is a network made by connecting components and is used to define and visualize relationships between various components. We study these networks and use them to solve various problems.
 Graphs model maps and navigation (intersections = vertices, roads = edges), social networks (people = vertices, friendships = edges, and friend recommendations come from "friends of friends"), and even Sudoku, which can be framed as a vertex coloring problem.

@@ -1,3 +1,4 @@
+I want to be a cracked SWE and go abroad and get into a good company. i want to be a reasearch assistant, i want to make a compiler, be good at C. 
 
 Your best strategy is to build **two things at once**:
 
